@@ -19,30 +19,6 @@ app.set('views', './views');
 app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 
-const language = 'nl';
-
-function setLanguage(language) {
-  let htmlLang = '';
-  let htmlDir = '';
-
-  if (language === 'nl') {
-    htmlLang = 'nl';
-  } else if (language === 'en') {
-    htmlLang = 'en';
-  } else if (language === 'ar') {
-    htmlLang = 'ar';
-    htmlDir = 'rtl';
-  }
-
-  return { htmlLang, htmlDir };
-}
-
-app.get('/:language/', async (request, response) => {
-  const { language } = request.params;
-  // Rendert de homepagina 
-  response.render('index', { language });
-});
-
 
 
 
