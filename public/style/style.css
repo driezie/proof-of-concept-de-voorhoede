@@ -82,10 +82,15 @@
   --margin-sides: 48px;
 }
 
-
 @property --line-size {
   syntax: '<length>'; /* <- defined as type length for the transition to work */
   initial-value: 0px;
+  inherits: false;
+}
+
+@property --line-color {
+  syntax: '<color>';
+  initial-value: black;
   inherits: false;
 }
 
@@ -100,9 +105,34 @@
   }
 }
 
+@keyframes line-color-rainbow {
+  0% {
+    --line-color: red;
+  }
+  25% {
+    --line-color: orange;
+  }
+  50% {
+    --line-color: yellow;
+  }
+  75% {
+    --line-color: green;
+  }
+  100% {
+    --line-color: blue;
+  }
+}
+
+html {
+  animation: line-color-rainbow .3s infinite alternate;
+  animation-delay: 0.4s;
+  background-color: var(--line-color);
+}
+
 body * {
-  animation: .3s line-animation infinite alternate;
-  border: var(--line-size) solid black;
+  animation: line-animation .3s infinite alternate, line-color-rainbow .3s infinite alternate;
+  background-color: var(--line-color);
+  border: var(--line-size) solid var(--line-color);
 }
 
 img {
