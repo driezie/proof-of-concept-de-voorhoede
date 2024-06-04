@@ -1,0 +1,22 @@
+<% if (playlist_feature.length === 0) { %>
+    
+    <div class="card-grid card-grid-3 empty">
+        <p>You do not have liked playlists</p>
+        <% 
+        // Genereert een random playlist
+        const randomIndex = Math.floor(Math.random() * playlists.length);
+        const randomPlaylistId = playlists[randomIndex].id;
+        %>
+        <form action="/" method="POST">
+           
+            <input type="hidden" name="itemId" value="<%= randomPlaylistId %>">
+            <button type="submit" >Add a random playlist here!</button>
+        </form>
+    <% } else { %>
+
+    <div class="card-grid card-grid-3">
+    <% playlist_feature.forEach(item => { %> <%-
+        include('../components/playlist-card',{item: item}) %> 
+    <% }) %>
+<% } %>
+</div>

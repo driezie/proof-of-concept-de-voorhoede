@@ -1,0 +1,370 @@
+/*
+  Font Imports
+*/
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Mono&family=Syne:wght@400..800&display=swap');
+
+/* 
+  <uniquifier>: Use a unique and descriptive class name
+  <weight>: Use a value from 100 to 900 
+*/
+
+.inter-regular {
+  font-family: "Inter", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "slnt" 0;
+}
+
+/* 
+  <uniquifier>: Use a unique and descriptive class name
+  <weight>: Use a value from 400 to 800
+*/
+
+.syne-regular {
+  font-family: "Syne", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 
+  <uniquifier>: Use a unique and descriptive class name
+*/
+
+.roboto-mono-regular {
+  font-family: "Roboto Mono", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* 
+  Variables
+*/
+
+:root {
+  /* color */
+
+  /* --primary-color: rgb(96, 119, 245);
+  --primary-color-ghost: #6077f5; */
+
+  /* --primary-color: #E5E5E5;
+  --primary-color-ghost: #F5F5F5;
+  --secondary-color-kiezel: #1e1e1e;
+  --secondary-color-ghost: #353739; */
+
+  --primary-color: #1e1e1e;
+  --primary-color-ghost: #353739;
+
+  --secondary-color-kiezel: #E5E5E5;
+  --secondary-color-ghost: #F5F5F5;
+
+  --extra-outline: #25abdb;
+
+  /* font */
+  --font-primary: "Inter", var(--font-fallback);
+  --font-secondary: "Roboto Mono", var(--font-fallback);
+  --font-tertiary: "Syne", var(--font-fallback);
+
+  --font-fallback: sans-serif, monospace;
+
+
+  /* paddding/layout */
+  --general-padding: 16px;
+  --line-px: 1px;
+  --line-style: solid;
+  --default-button-border-radius: 6px;
+  --full-button-border-radius: 999px;
+  --default-button-padding: 8px 16px;
+
+  --margin-sides: 48px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+
+body {
+  margin: 0;
+  padding: var(--general-padding);
+  font-family: var(--font-primary);
+  background: var(--secondary-color-kiezel);
+}
+
+
+body .container {
+  min-height: calc(100vh - (2 * var(--general-padding)));
+  border: var(--line-px) var(--line-style) var(--primary-color);
+}
+
+/* 
+  Navigation
+*/
+
+.navigation {
+  align-items: center;
+  border-block-end: var(--line-px) var(--line-style) var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  margin: 0 var(--margin-sides);
+  padding: 10px 0;
+}
+
+.navigation .logo {
+  padding: 10px 0;
+}
+
+.navigation .logo svg path {
+  fill: var(--primary-color);
+}
+
+.navigation nav {
+  align-items: center;
+  display: flex;
+  gap: 8px;
+}
+
+.navigation nav > ul {
+  display: flex;
+  justify-content: space-between;
+  list-style-type: none;
+  padding: 0;
+  gap: 8px;
+}
+
+.navigation nav > ul > li > a {
+  color: var(--primary-color);
+  font-family: var(--font-secondary);
+  padding: var(--default-button-padding);
+  text-decoration: none;
+  border-radius: var(--default-button-border-radius);
+  text-transform: uppercase;
+}
+
+.navigation nav > ul.cta a {
+  display: block;
+  background: var(--primary-color);
+  color: var(--secondary-color-kiezel);
+}
+
+.navigation nav > ul.lang {
+  gap: 16px;
+}
+
+.navigation nav > ul.lang li {
+  padding: 0;
+}
+
+.navigation nav > ul.lang a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  background: var(--secondary-color-kiezel);
+  border-radius: var(--full-button-border-radius);
+  color: var(--primary-color);
+  padding: 0;
+  border: var(--line-px) var(--line-style) var(--primary-color);  
+}
+
+.navigation nav > ul.lang .active a {
+  background: var(--primary-color);
+  color: var(--secondary-color-kiezel);
+}
+
+.navigation nav > ul.lang .active a:hover {
+  background: var(--primary-color-ghost);
+}
+
+.navigation nav > ul.menu a:hover, .navigation nav > ul.lang a:hover, .navigation nav > ul.menu a:focus{
+  --alpha: 10%;
+  background: color-mix(in srgb, var(--primary-color) var(--alpha, 100%), transparent);
+  outline-color: var(--primary-color);
+}
+
+
+
+.navigation nav > ul.cta a:hover {
+  background: var(--primary-color-ghost);
+}
+
+.navigation nav > ul.cta a:focus, .navigation nav > ul.lang a:focus{
+  outline-color: var(--extra-outline);
+  background: var(--primary-color-ghost)
+}
+
+.navigation nav > ul.lang :not(.active) a:focus{
+  --alpha: 10%;
+  background: color-mix(in srgb, var(--primary-color) var(--alpha, 100%), transparent);
+}
+
+.navigation nav span.devider {
+  background: var(--primary-color);
+  height: 32px;
+  width: var(--line-px);
+  margin: 0 16px;
+}
+
+section.hero {
+  margin: 0 var(--margin-sides);
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+  padding: 70px 0;
+  border-block-end: var(--line-px) var(--line-style) var(--primary-color);
+}
+
+section.hero .content h1 {
+  margin: 0;
+  font-family: var(--font-tertiary);
+  font-size: 4.3rem;
+  font-weight: 400;
+  color: var(--primary-color);
+  max-width: 870px;
+}
+
+section.hero .content p {
+  font-family: var(--font-primary);
+  font-size: 1.2rem;
+  line-height: 1.42;
+  color: var(--primary-color);
+  max-width: 870px;
+}
+
+
+section.hero article:nth-child(2n + 1),
+section.hero .hero-banner:nth-child(2n + 2) {
+ flex: 0 0 calc(50% - 50px);
+}
+
+section.hero .content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn.primary {
+  width: fit-content;
+  background: var(--primary-color);
+  color: var(--secondary-color-kiezel);
+  font-family: var(--font-secondary);
+  padding: var(--default-button-padding);
+  text-decoration: none;
+  border-radius: var(--default-button-border-radius);
+  text-transform: uppercase;
+}
+
+.btn.primary:hover {
+  background: var(--primary-color-ghost);
+}
+
+.btn.primary:focus {
+  outline-color: var(--extra-outline);
+  background: var(--primary-color-ghost);
+}
+
+section.hero .content svg {
+  position: absolute;
+  inset-inline-end: 200px;
+  inset-block-end: 15px;
+}
+
+/* 
+  About page 
+*/
+
+section.info {
+  margin: 0 var(--margin-sides);
+  padding: 80px 0;
+  border-block-end: var(--line-px) var(--line-style) var(--primary-color);
+  display: flex;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+section.info h2 {
+  font-family: var(--font-secondary);
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: var(--primary-color);
+  margin: 0;
+  text-transform: uppercase;
+}
+
+section.info .title {
+  display: block;
+  min-width: 200px;
+  max-width: 300px;
+}
+
+section.info article {
+  border-inline-start: var(--line-px) var(--line-style) var(--primary-color);
+}
+
+section.info ul {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  list-style-type: none;
+  padding: 0 25px;
+  gap: 50px;
+}
+
+section.info ul li {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+section.info ul li::after {
+  display: block;
+  content: "";
+  background: red;
+  width: 1px;
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  inset-inline-end: 0px;
+}
+
+section.info ul li:nth-child(even)::after {
+  display: none;
+}
+
+section.info ul li:nth-child(1)::before,
+section.info ul li:nth-child(2)::before {
+  content: "";
+  background: red;
+  height: 1px;
+  width: 200%;
+  position: absolute;
+  /* left: 0; */
+  inset-block-end: -25px;
+}
+
+
+section.info ul li:nth-child(2)::before {
+  left: -100%; /* Position to the left of the second li */
+}
+
+section.info ul h3 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-size: 1.75rem;
+  font-weight: 300;
+}
+
+section.info ul p {
+  line-height: 1.35;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}

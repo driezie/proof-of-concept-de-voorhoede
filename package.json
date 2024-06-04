@@ -1,7 +1,7 @@
 {
-  "name": "proof-of-concept",
+  "name": "pleasurable-ui",
   "version": "1.0.0",
-  "description": "Ontwerp en maak een data driven online concept voor een opdrachtgever.",
+  "description": "Ontwerp en maak voor een opdrachtgever een interface waar gebruikers blij van worden.",
   "main": "server.js",
   "type": "module",
   "directories": {
@@ -12,9 +12,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fdnd-task/proof-of-concept.git"
+    "url": "git+https://github.com/fdnd-task/pleasurable-ui.git"
   },
-   "keywords": [
+  "keywords": [
     "node",
     "express",
     "ejs"
@@ -22,11 +22,11 @@
   "author": "J.P. Sturkenboom <j.p.sturkenboom@hva.nl>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fdnd-task/proof-of-concept/issues"
+    "url": "https://github.com/fdnd-task/pleasurable-ui/issues"
   },
-  "homepage": "https://github.com/fdnd-task/proof-of-concept#readme",
+  "homepage": "https://github.com/fdnd-task/pleasurable-ui#readme",
   "dependencies": {
-    "ejs": "^3.1.9",
-    "express": "^4.18.2"
+    "ejs": "^3.1.10",
+    "express": "^4.19.2"
   }
 }
