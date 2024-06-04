@@ -82,6 +82,29 @@
   --margin-sides: 48px;
 }
 
+
+@property --line-size {
+  syntax: '<length>'; /* <- defined as type length for the transition to work */
+  initial-value: 0px;
+  inherits: false;
+}
+
+@keyframes line-animation {
+  from {
+      --line-size: 1px;
+      transition: all 0.3s ease-in; /* Try "ease-in" for a slower start */
+  }
+  to {
+      --line-size: 10px;
+      transition: all 0.3s ease-out; /* Keep "ease-out" for a smoother end */
+  }
+}
+
+body * {
+  animation: .3s line-animation infinite alternate;
+  border: var(--line-size) solid black;
+}
+
 img {
   max-width: 100%;
   height: auto;
@@ -102,6 +125,61 @@ body .container {
   border: var(--line-px) var(--line-style) var(--primary-color);
 }
 
+.grid {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  list-style-type: none;
+  padding: 0;
+  padding-inline-start: 25px;
+  gap: 50px;
+}
+
+.grid li {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+
+
+.grid.with-lines li::after {
+  display: block;
+  content: "";
+  background: var(--primary-color);
+  width: var(--line-px);
+  height: 100%;
+  position: absolute;
+  top: 0px;
+  inset-inline-end: 0px;
+}
+
+.grid.with-lines li:nth-child(odd) {
+  /* background-color: red; */
+  padding-inline-end: 25px;
+}
+
+.grid.with-lines li:nth-child(even)::after {
+  display: none;
+}
+
+.grid.with-lines li:nth-child(1)::before {
+  content: "";
+  background: var(--primary-color);
+  height: var(--line-px);
+  width: calc(200% + 50px);
+  position: absolute;
+  /* left: 0; */
+  inset-block-end: -25px;
+}
+
+
+.grid.with-lines li:nth-child(2)::before {
+  inset-block-end: -100%; 
+}
+
 /* 
   Navigation
 */
@@ -116,7 +194,20 @@ body .container {
 }
 
 .navigation .logo {
-  padding: 10px 0;
+  margin: 10px 0;
+}
+
+.navigation a.logo:focus{
+  outline: none;
+}
+.navigation  a.logo:focus svg {
+  outline: var(--line-px) var(--line-style) var(--extra-outline);
+  --alpha: 10%;
+  background-color: var(--primary-color) ;
+}
+
+.navigation a.logo:focus svg path {
+  fill: var(--secondary-color-kiezel);
 }
 
 .navigation .logo svg path {
@@ -314,61 +405,6 @@ section.info article {
   border-inline-start: var(--line-px) var(--line-style) var(--primary-color);
 }
 
-section.info ul {
-  margin-block-start: 0;
-  margin-block-end: 0;
-  display: grid;
-  gap: 16px;
-  grid-template-columns: repeat(2, 1fr);
-  list-style-type: none;
-  padding: 0;
-  padding-inline-start: 25px;
-  gap: 50px;
-}
-
-section.info ul li {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  position: relative;
-}
-
-section.info ul li::after {
-  display: block;
-  content: "";
-  background: red;
-  width: 1px;
-  height: 100%;
-  position: absolute;
-  top: 0px;
-  inset-inline-end: 0px;
-}
-
-section.info ul li:nth-child(odd) {
-  /* background-color: red; */
-  padding-inline-end: 25px;
-}
-
-section.info ul li:nth-child(even)::after {
-  display: none;
-}
-
-section.info ul li:nth-child(1)::before
-/* section.info ul li:nth-child(2)::before  */
-{
-  content: "";
-  background: red;
-  height: 1px;
-  width: calc(200% + 50px);
-  position: absolute;
-  /* left: 0; */
-  inset-block-end: -25px;
-}
-
-
-section.info ul li:nth-child(2)::before {
-  inset-block-end: -100%; /* Position to the left of the second li */
-}
 
 section.info ul h3 {
   margin-block-start: 0;
@@ -381,4 +417,73 @@ section.info ul p {
   line-height: 1.35;
   margin-block-start: 0;
   margin-block-end: 0;
+}
+
+
+section.events {
+  margin: 0 var(--margin-sides);
+  padding: 80px 0;
+  border-block-end: var(--line-px) var(--line-style) var(--primary-color);
+}
+
+section.events .title {
+  margin-bottom: 40px;
+}
+
+section.events h2 {
+  margin: 0;
+  font-family: var(--font-tertiary);
+  font-size: 4.3rem;
+  font-weight: 400;
+  text-align: center;
+  color: var(--primary-color);
+  text-transform: uppercase;
+}
+
+section.events ul {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(2, 1fr);
+  list-style-type: none;
+  padding: 0;
+  padding-inline-start: 25px;
+  gap: 50px;
+}
+
+section.events ul li {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+section.events ul li h3 {
+  margin-block-start: 0;
+  margin-block-end: 0;
+  font-size: 1.75rem;
+  font-weight: 300;
+}
+
+section.events ul li .event {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-direction: column;
+}
+
+section.events ul li .content {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+}
+
+section.events ul li .content .details {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+section.events ul li .content p {
+  line-height: 1.35;
 }
