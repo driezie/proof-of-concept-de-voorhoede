@@ -89,7 +89,8 @@ img {
 
 
 body {
-  margin: 0;
+  max-width: 1600px;
+  margin: 0 auto;
   padding: var(--general-padding);
   font-family: var(--font-primary);
   background: var(--secondary-color-kiezel);
@@ -242,6 +243,12 @@ section.hero .hero-banner:nth-child(2n + 2) {
  flex: 0 0 calc(50% - 50px);
 }
 
+section.hero .hero-banner img {
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
 section.hero .content {
   position: relative;
   display: flex;
@@ -314,7 +321,8 @@ section.info ul {
   gap: 16px;
   grid-template-columns: repeat(2, 1fr);
   list-style-type: none;
-  padding: 0 25px;
+  padding: 0;
+  padding-inline-start: 25px;
   gap: 50px;
 }
 
@@ -336,16 +344,22 @@ section.info ul li::after {
   inset-inline-end: 0px;
 }
 
+section.info ul li:nth-child(odd) {
+  /* background-color: red; */
+  padding-inline-end: 25px;
+}
+
 section.info ul li:nth-child(even)::after {
   display: none;
 }
 
-section.info ul li:nth-child(1)::before,
-section.info ul li:nth-child(2)::before {
+section.info ul li:nth-child(1)::before
+/* section.info ul li:nth-child(2)::before  */
+{
   content: "";
   background: red;
   height: 1px;
-  width: 200%;
+  width: calc(200% + 50px);
   position: absolute;
   /* left: 0; */
   inset-block-end: -25px;
@@ -353,7 +367,7 @@ section.info ul li:nth-child(2)::before {
 
 
 section.info ul li:nth-child(2)::before {
-  left: -100%; /* Position to the left of the second li */
+  inset-block-end: -100%; /* Position to the left of the second li */
 }
 
 section.info ul h3 {
