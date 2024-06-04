@@ -306,6 +306,9 @@ body .container {
 }
 
 #news-dropdown .display {
+  background-image: url('/images/event-1-image.png');
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -327,7 +330,7 @@ body .container {
 
 #news-dropdown .display .title {
   font-family: var(--font-tertiary);
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   font-weight: 400;
 }
 
@@ -357,7 +360,16 @@ body .container {
   transition: 0.1s ease-in-out;
 }
 
+#news-dropdown .menu-list a.btn.primary {
+  margin-block-start: 16px;
+  padding: var(--default-button-padding);
+  background-color: var(--primary-color);
+  color: var(--secondary-color-kiezel);
+}
 
+#news-dropdown .menu-list a.btn.primary:hover {
+  background-color: var(--primary-color-ghost);
+}
 
 .navigation nav > ul > li > button.active {
   border-radius: var(--default-button-border-radius) var(--default-button-border-radius) 0 0;
