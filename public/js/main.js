@@ -1,120 +1,58 @@
-document.body.addEventListener('submit', formHandler)
+const buttons = document.querySelectorAll('.navigation .menu button');
+const dropdowns = document.querySelectorAll('.dropdown');
 
-async function toggleFavoriteClient(itemId, isLiked, isLikedId, apiUrl) {
-  const url = isLiked ? `${apiUrl}/tm_likes/${isLikedId}` : `${apiUrl}/tm_likes`;
-  const method = isLiked ? 'DELETE' : 'POST';
-  const body = isLiked ? null : JSON.stringify({ playlist: itemId, user: 4 });
+buttons.forEach(button => {
+  button.addEventListener('mouseover', () => {
+    const id = button.id;
+    const dropdown = document.getElementById(`${id}-dropdown`);
 
-  const response = await fetch(url, {
-    method: method,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: body,
+    dropdown.classList.add('show');
+    button.classList.add('active');
   });
 
-  if (!response.ok) {
-    throw new Error('Failed to update favorites');
-  } else {
-    console.log('Favorites updated successfully');
-  }
-}
+  button.addEventListener('mouseout', () => {
+    const id = button.id;
+    const dropdown = document.getElementById(`${id}-dropdown`);
 
-function checkIfLiked(playlist, array) {
-  const isLiked = array.some(likedPlaylist => likedPlaylist.playlist === playlist.id);
-  return {
-    ...playlist,
-    isLiked: isLiked
-  };
-}
-
-function updateFavorites() {
-  const apiUrl = 'https://fdnd-agency.directus.app/items';
-
-  fetch(`${apiUrl}/tm_playlist?fields=*.*.*.*`)
-    .then(response => response.json())
-    .then(playlistsData => {
-      const playlists = playlistsData.data;
-
-      return fetch(`${apiUrl}/tm_likes?filter={"user":"4"}`)
-        .then(response => response.json())
-        .then(likedPlaylistsData => {
-          const likedPlaylists = likedPlaylistsData.data;
-
-          const playlistsWithLikedStatus = playlists.map(playlist => {
-            return checkIfLiked(playlist, likedPlaylists);
-          });
-
-          const likedPlaylistsOnly = playlistsWithLikedStatus.filter(playlist => playlist.isLiked);
-
-          return fetch('/')
-            .then(response => response.text())
-            .then(updatedHtml => {
-              if (document.startViewTransition) {
-                document.startViewTransition(() => {
-                  document.body.innerHTML = updatedHtml;
-                });
-              } else {
-                document.body.innerHTML = updatedHtml;
-              }
-            });
-        });
-    })
-    .catch(error => {
-      console.error(error);
+    dropdown.addEventListener('mouseover', () => {
+      dropdown.classList.add('show');
+      button.classList.add('active');
     });
-}
 
-function formHandler(e) {
-  e.target.classList.add('loading');
-  e.target.querySelector('button').setAttribute('disabled', 'disabled');
+    dropdown.addEventListener('mouseout', () => {
+      dropdown.classList.remove('show');
+      button.classList.remove('active');
+    });
 
-  const formData = new FormData(e.target);
-  formData.append("enhanced", "true");
-  const itemId = formData.get('itemId');
-  const isLiked = formData.get('isLiked') === 'true'; // Assuming a boolean value is sent
-  const isLikedId = formData.get('isLikedId');
+    dropdown.classList.remove('show');
+    button.classList.remove('active');
+  });
+});
 
-  const apiUrl = 'https://fdnd-agency.directus.app/items';
+dropdowns.forEach(dropdown => {
+  dropdown.addEventListener('mouseover', () => {
+    const buttonId = dropdown.id.replace('-dropdown', '');
+    const button = document.getElementById(buttonId);
 
-  try {
-    toggleFavoriteClient(itemId, isLiked, isLikedId, apiUrl); // Call toggleFavoriteClient here
-    updateFavorites(); // Update favorites after toggling
-  } catch (error) {
-    console.error(error);
-  }
-  e.preventDefault();
-}
-
-
-
-// Left tabje
-
-document.addEventListener('DOMContentLoaded', function() {
-  // Variable creation
-  const storiesButton = document.querySelector('.storiesButton');
-  const playlistsButton = document.querySelector('.playlistsButton');
-  const storiesContent = document.querySelector('.list-stories');
-  const playlistsContent = document.querySelector('.list-playlists');
-  playlistsContent.classList.add('hidden');
-
-  storiesButton.addEventListener('click', function() {
-    showStories();
+    dropdown.classList.add('show');
+    button.classList.add('active');
   });
 
-  playlistsButton.addEventListener('click', function() {
-    showPlaylists();
-  }); 
+  dropdown.addEventListener('mouseout', () => {
+    const buttonId = dropdown.id.replace('-dropdown', '');
+    const button = document.getElementById(buttonId);
+
+    dropdown.classList.remove('show');
+    button.classList.remove('active');
+  });
+});
 
 
-  // stories laten zien 
-  function showStories() {
-      storiesContent.classList.remove('hidden');
-      playlistsContent.classList.add('hidden');
-  }
-
-  function showPlaylists() {
-      playlistsContent.classList.remove('hidden');
-      storiesContent.classList.add('hidden');
+window.addEventListener('scroll', () => {
+  const navigation = document.querySelector('.navigation');
+  if (window.scrollY > 16) {
+    navigation.classList.add('scrolled');
+  } else {
+    navigation.classList.remove('scrolled');
   }
 });

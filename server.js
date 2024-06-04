@@ -1,32 +1,50 @@
-// Importeer het npm pakket express uit de node_modules map
 import express from 'express';
-
-// Importeer de zelfgemaakte functies uit de ./helpers map
 import { makeFetchRequest } from './helpers/fetchManager.js';
 
-// Maak een nieuwe express app aan
 const app = express();
-
-// API naar Directus
 const apiUrl = "https://fdnd-agency.directus.app/items";
 
-// Stel ejs in als template engine
-// Stel de map met ejs templates in
-// Gebruik de map 'public' voor statische resources, zoals stylesheets, afbeeldingen en client-side JavaScript
-// Zorg dat werken met request data makkelijker wordt
+// Set ejs as the template engine and configure the views directory
 app.set('view engine', 'ejs');
 app.set('views', './views');
+
+// Serve static files from the 'public' directory
 app.use(express.static('public'));
+
+// Parse URL-encoded bodies
 app.use(express.urlencoded({ extended: true }));
 
+// Example route to render a page with the selected language
 
+// Import and use cookie-parser middleware
+import cookieParser from 'cookie-parser';
+app.use(cookieParser());
 
+// Route to set language preference and save in cookie
+app.get('/lang/:language', (req, res) => {
+  const { language } = req.params;
+  res.cookie('language', language, { maxAge: 900000, httpOnly: true }); // Set cookie for 15 minutes
+  res.redirect('/');
+});
 
-// Stel het poortnummer in waar express op moet gaan luisteren
+// Route to render page with language preference from cookie
+app.get('/', (req, res) => {
+  const lang = req.cookies.language || 'en'; // Get language from cookie or default to English
+  // Make a request to fetch data based on the selected language
+  makeFetchRequest(apiUrl, lang)
+    .then(data => {
+      // Render the view with the fetched data and the selected language
+      res.render('index', { data, lang });
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      res.status(500).send('Internal Server Error');
+    });
+});
+// Set the port number
 app.set('port', process.env.PORT || 8000);
 
-// Start express op, haal daarbij het zojuist ingestelde poortnummer op
+// Start the Express server
 app.listen(app.get('port'), function() {
-  // Toon een bericht in de console en geef het poortnummer door
   console.log(`Application started on http://localhost:${app.get('port')}`);
 });

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-  <html lang="<%= language.htmlLang %>" dir="<%= language.htmlDir %>">
+<html lang="<%= lang %>" dir="<%= lang === 'ar' ? 'rtl' : 'ltr' %>">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -79,9 +79,29 @@
                 <li><a title="home" href="/">Home</a></li>
                 <li><a title="over ons" href="/about-us">Over Ons</a></li>
                 <li><a title="onze leden" href="/leden">Onze Leden</a></li>
-                <li><a title="cases" href="/">Cases</a></li>
-                <li><a title="actueel" href="/">Actueel</a></li>
-                <li><a title="evenementen" href="/about">Evenementen</a></li>
+                <li>
+                  <button id="news" title="evenementen" href="/about">
+                    Nieuws 
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M6 9L12 15L18 9" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+                  <div id="news-dropdown" class="dropdown-content">
+                    <a href="" class="display">
+                      <p class="title">Nieuws</p>
+                        
+                      <p>Dutch Digital Agencies vertegenwoordigt de beste digitale bureaus van Nederland. Op deze pagina delen we nieuws en opinies over onze branche en digitale innovatie in Nederland.</p>
+                    </a>
+                    <div class="menu-list">
+                      <p>Laatste Evenementen:</p>
+                      <a href="">DDA Golf toernooi</a>
+                      <a href="">Dutch Digital Day 2024</a>
+                      <a href="">Kennissessie Kengetallen Finance</a>
+                      <a href="">HAN bedrijvenmarkt IT en Mediadesign</a>
+                    </div>
+                    
+                  </div>
+                </li>
                 <li><a title="vacatures" href="/cacatures">Vacatures</a></li>
                 <li><a title="contact" href="/contact">Contact</a></li>
               </ul>
@@ -90,14 +110,26 @@
               </ul>
               <span class="devider"></span>
               <ul class="lang">
-                <li class="active">
-                  <a href="/" title="Nederlands">NL</a>
+                <li class="<%= lang === 'nl' ? 'active' : '' %>">
+                  <a href="/lang/nl"  title="Nederlands">NL</a>
                 </li>
-                <li>
-                  <a href="/en" title="English" translate="no" class="verander taal naar Engels">EN</a>
+                <li class="<%= lang === 'en' ? 'active' : '' %>" >
+                  <a href="/lang/en" title="English" translate="no">EN</a>
                 </li>
+                <li class="<%= lang === 'ar' ? 'active' : '' %>">
+                  <a href="/lang/ar" title="عربي (Arabic)" translate="no" dir="rtl">AR</a>
+                </li>
+                
+              </ul>
+
+              <ul class="mobile-menu">
                 <li>
-                  <a href="/ar" title="عربي (Arabic)" translate="no" class="verander taal naar عربي" dir="rtl">AR</a>
+                  <button>
+                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1 1L7 7L13 1" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    
+                    </button>
                 </li>
               </ul>
             </nav>
