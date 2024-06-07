@@ -47,19 +47,19 @@
 :root {
   /* color */
 
-  /* --primary-color: rgb(96, 119, 245);
-  --primary-color-ghost: #6077f5; */
+  --primary-color: white;
+  --primary-color-ghost: #6bd31b;
 
   /* --primary-color: #E5E5E5;
-  --primary-color-ghost: #F5F5F5;
-  --secondary-color-kiezel: #1e1e1e;
-  --secondary-color-ghost: #353739; */
+  --primary-color-ghost: #F5F5F5; */
+  --secondary-color-kiezel: #e822c7;
+  --secondary-color-ghost: #9f23b2;
 
-  --primary-color: #1e1e1e;
-  --primary-color-ghost: #353739;
+  /* --primary-color: #1e1e1e;
+  --primary-color-ghost: #353739; */
 
-  --secondary-color-kiezel: #E5E5E5;
-  --secondary-color-ghost: #F5F5F5;
+  /* --secondary-color-kiezel: #E5E5E5;
+  --secondary-color-ghost: #F5F5F5; */
 
   --extra-outline: #25abdb;
 
@@ -80,6 +80,11 @@
   --default-button-padding: 8px 16px;
 
   --margin-sides: 20px;
+}
+
+::selection {
+  background: var(--primary-color);
+  color: var(--secondary-color-kiezel);
 }
 /* 
 @property --line-size {
@@ -263,6 +268,10 @@ body :has(.navigation ul.menu.show) nav {
   border: none;
 }
 
+
+
+
+
 .navigation nav > ul > li > button {
   cursor: pointer;
   display: flex;
@@ -297,6 +306,10 @@ body :has(.navigation ul.menu.show) nav {
   text-decoration: none;
   border-radius: var(--default-button-border-radius);
   text-transform: uppercase;
+}
+
+.navigation nav > ul.mobile-menu button svg path {
+  stroke: var(--secondary-color-kiezel);
 }
 
 .navigation nav > ul.menu.show {
@@ -475,6 +488,7 @@ section.info {
   justify-content: space-between;
   flex-direction: column;
   gap: 25px;
+  color: var(--primary-color);
 }
 
 section.info h2 {
@@ -547,6 +561,7 @@ section.events ul li h3 {
   margin-block-end: 0;
   font-size: 1.75rem;
   font-weight: 300;
+  color: var(--primary-color);
 }
 
 section.events ul li .event {
@@ -566,10 +581,16 @@ section.events ul li .content .details {
   display: flex;
   gap: 16px;
   align-items: center;
+  color: var(--primary-color);
+}
+
+section.events ul li .content .details path {
+  stroke: var(--primary-color);
 }
 
 section.events ul li .content p {
   line-height: 1.35;
+  color: var(--primary-color);
 }
 
 section.events ul li .content a:not(.btn.primary) {
@@ -581,6 +602,7 @@ section.events ul li .content a:not(.btn.primary) {
 footer {
   margin: 0 var(--margin-sides);
   padding: 80px 0 0 0;
+  color: var(--primary-color);
 }
 
 footer .top {
@@ -614,6 +636,10 @@ footer a {
   color: var(--primary-color);
   text-decoration: none;
   transition: all 0.1s ease-in;
+}
+
+footer .logo path {
+  fill: var(--primary-color);
 }
 
 footer ul {
