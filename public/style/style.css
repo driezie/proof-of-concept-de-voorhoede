@@ -47,19 +47,19 @@
 :root {
   /* color */
 
-  --primary-color: white;
-  --primary-color-ghost: #6bd31b;
+  /* --primary-color: white;
+  --primary-color-ghost: #6bd31b; */
 
   /* --primary-color: #E5E5E5;
   --primary-color-ghost: #F5F5F5; */
-  --secondary-color-kiezel: #e822c7;
-  --secondary-color-ghost: #9f23b2;
+  /* --secondary-color-kiezel: #e822c7;
+  --secondary-color-ghost: #9f23b2; */
 
-  /* --primary-color: #1e1e1e;
-  --primary-color-ghost: #353739; */
+  --primary-color: #1e1e1e;
+  --primary-color-ghost: #353739;
 
-  /* --secondary-color-kiezel: #E5E5E5;
-  --secondary-color-ghost: #F5F5F5; */
+  --secondary-color-kiezel: #E5E5E5;
+  --secondary-color-ghost: #F5F5F5;
 
   --extra-outline: #25abdb;
 
