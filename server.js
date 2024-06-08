@@ -29,7 +29,7 @@ app.get('/lang/:language', (req, res) => {
 
 // Route to render page with language preference from cookie
 app.get('/', (req, res) => {
-  const lang = req.cookies.language || 'en'; // Get language from cookie or default to English
+  const lang = req.cookies.language || 'nl'; // Get language from cookie or default to Dutch
   // Make a request to fetch data based on the selected language
   makeFetchRequest(apiUrl, lang)
     .then(data => {
@@ -41,6 +41,106 @@ app.get('/', (req, res) => {
       res.status(500).send('Internal Server Error');
     });
 });
+
+
+// Route to render page with language preference from cookie
+app.get('/vacancies', (req, res) => {
+  const lang = req.cookies.language || 'nl'; // Get language from cookie or default to Dutch
+  // Make a request to fetch data based on the selected language
+  makeFetchRequest(apiUrl, lang)
+    .then(data => {
+      // Render the view with the fetched data and the selected language
+      res.render('vacancies', { data, lang });
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      res.status(500).send('Internal Server Error');
+    });
+});
+
+
+
+// Route to render page with language preference from cookie
+app.get('/about', (req, res) => {
+  const lang = req.cookies.language || 'nl'; // Get language from cookie or default to Dutch
+  // Make a request to fetch data based on the selected language
+  makeFetchRequest(apiUrl, lang)
+    .then(data => {
+      // Render the view with the fetched data and the selected language
+      res.render('about', { data, lang });
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      res.status(500).send('Internal Server Error');
+    });
+});
+
+// Route to render page with language preference from cookie
+app.get('/news', (req, res) => {
+  const lang = req.cookies.language || 'nl'; // Get language from cookie or default to Dutch
+  // Make a request to fetch data based on the selected language
+  makeFetchRequest(apiUrl, lang)
+    .then(data => {
+      // Render the view with the fetched data and the selected language
+      res.render('news', { data, lang });
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      res.status(500).send('Internal Server Error');
+    });
+});
+
+// Route to render page with language preference from cookie
+app.get('/members', (req, res) => {
+  const lang = req.cookies.language || 'nl'; // Get language from cookie or default to Dutch
+  // Make a request to fetch data based on the selected language
+  makeFetchRequest(apiUrl, lang)
+    .then(data => {
+      // Render the view with the fetched data and the selected language
+      res.render('members', { data, lang });
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      res.status(500).send('Internal Server Error');
+    });
+});
+
+// Route to render page with language preference from cookie
+app.get('/contact', (req, res) => {
+  const lang = req.cookies.language || 'nl'; // Get language from cookie or default to Dutch
+  // Make a request to fetch data based on the selected language
+  makeFetchRequest(apiUrl, lang)
+    .then(data => {
+      // Render the view with the fetched data and the selected language
+      res.render('contact', { data, lang });
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      res.status(500).send('Internal Server Error');
+    });
+});
+
+
+// Route to render page with language preference from cookie
+app.get('/cases', (req, res) => {
+  const lang = req.cookies.language || 'nl'; // Get language from cookie or default to Dutch
+  // Make a request to fetch data based on the selected language
+  makeFetchRequest(apiUrl, lang)
+    .then(data => {
+      // Render the view with the fetched data and the selected language
+      res.render('cases', { data, lang });
+    })
+    .catch(error => {
+      console.error('Error fetching data:', error);
+      res.status(500).send('Internal Server Error');
+    });
+});
+
+
+
+
+
+
 // Set the port number
 app.set('port', process.env.PORT || 8000);
 
