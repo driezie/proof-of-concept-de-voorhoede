@@ -443,6 +443,7 @@ section.hero .content .buttons {
 
 section.hero .content .buttons .btn.secondary {
   padding-inline-start: 0px;
+  padding-inline-end: 0px;
 }
 
 .btn.primary {
@@ -905,5 +906,48 @@ section.members {
     display: grid;
     gap: 50px;
     grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.line-animation {
+  display: inline-block;
+  position: relative;
+  text-decoration: none !important;
+}
+
+.line-animation::after {
+  content: '';
+  position: absolute;
+  width: calc(100%); /* 16px is the padding on the button */
+  height: 1.5px;
+  bottom: 0;
+  left: 0;
+  background: var(--primary-color);
+  transform: scaleX(1);
+  transform-origin: left;
+  transition: transform 0.4s ease-out;
+}
+
+.line-animation:hover::after {
+  animation: example 0.4s forwards;
+}
+
+/* Standard syntax */
+@keyframes example {
+  0% {
+    transform: scaleX(1);
+    transform-origin: right;
+  }
+  49% {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+  50% {
+    transform: scaleX(0);
+    transform-origin: left;
+  }
+  100% {
+    transform: scaleX(1);
+    transform-origin: left;
   }
 }
