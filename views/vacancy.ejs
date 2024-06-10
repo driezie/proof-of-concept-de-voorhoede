@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <%- include('components/head', pageTitle = "Onze leden") %>
+    <article class="container">
+        <%- include('components/header') %>
+
+        <section class="hero">
+          <article class="content">
+            <h1><%= data.title %></h1>
+          </article>
+        </section>
+        <section class="block">
+          <article class="content">
+            <ul class="grid grid3x">
+              <li>
+                <div class="description">
+                  <%- data.description || "<p>Er is momenteel geen intro beschrijving voor dit bedrijf.</p>" %>
+                </div>
+              </li>
+            </ul>
+          </article>
+        </section>
+        <script>
+          document.querySelectorAll(".block .content .description a").forEach(function(link) {
+              link.classList.add("line-animation");
+          });
+        </script>
+        <%- include('components/footer') %>
+    </div>
+  </body>
+</html>
+

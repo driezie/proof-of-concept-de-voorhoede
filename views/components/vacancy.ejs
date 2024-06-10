@@ -1,0 +1,34 @@
+<li class="vacancy">
+    <div class="title">
+        <h3>
+            <%= item.title %>
+        </h3>
+        <a class="btn primary" href="/vacancy/<%= item.id %>">Bekijk vacature</a>
+
+    </div>
+    
+    <div class="details">
+        <!-- Uren per week -->
+        <% if (item.hours == null) { %>
+            <p>- uur</p>
+        <% } else { %>
+            <p><%= item.hours %> uur</p>
+        <% } %>
+
+        <!-- Salaris -->
+        <% if (item.salary == null) { %>
+            <p>Salaris: -</p>
+        <% } else { %>
+            <p>Salaris: <%= item.salary %></p>
+        <% } %>
+
+        <!-- Baan -->
+        <% if (item.employment == null) { %>
+            <p>Baan: Onbekend</p>
+        <% } else { %>
+            <p>Baan: <%= item.employment %></p>
+        <% } %>
+    </div>
+    
+    
+</li>

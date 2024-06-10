@@ -10,28 +10,16 @@
           </article>
         </section>
 
-        <section class="vacancies">
+        <section class="block vacancies">
           <article class="content">
-            <ul class="grid grid1x">
-              <% data.forEach(item=> { %>
-              <li>
-                <picture>
-                  <img src="https://fdnd-agency.directus.app/assets/<%= item.photo %>" alt="">
-                </picture>
-                <picture class="logo">
-                  <img src="https://fdnd-agency.directus.app/assets/<%= item.logo %>" alt="">
-                </picture>
-                <h3>
-                  <%= item.title %>
-                </h3>
-                <p>
-                  <%= item.description %>
-                </p>
-                <p>
-                </p>
-              </li>
-              <% }) %>
-            </ul>
+              <div class="vacancies">
+                <ul>
+                  <% data.forEach(item => { %>
+                    <%- include('components/vacancy', { item: item }) %>
+                  <% }) %>                    
+                </ul>
+              </div>
+              
           </article>
         </section>
         <%- include('components/footer') %>

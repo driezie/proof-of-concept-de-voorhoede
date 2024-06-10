@@ -49,14 +49,21 @@ pages.forEach(page => {
   });
 });
 
-const detailPages = ['member'];
+const detailPages = ['member', 'vacancy'];
 
 detailPages.forEach(page => {
   if (page === 'member') {
     app.get(`/${page}/:id`, (req, res) => {
-      fetchFromApi('/dda_agencies/' + req.params.id).then(data => {
+      fetchFromApi('/dda_agencies/' + req.params.id + "?fields=*.*").then(data => {
         // Render the template for each page with the current theme and the data from the API
         res.render(page, { member: data.data})
+      });
+    });
+  } else if (page === 'vacancy') {
+    app.get(`/${page}/:id`, (req, res) => {
+      fetchFromApi('/dda_agencies_vacancies/' + req.params.id + "?fields=*.*").then(data => {
+        // Render the template for each page with the current theme and the data from the API
+        res.render(page, { data: data.data})
       });
     });
   }

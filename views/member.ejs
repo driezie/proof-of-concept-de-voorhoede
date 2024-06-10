@@ -16,13 +16,29 @@
                 <div class="description">
                   <%- member.description || "<p>Er is momenteel geen intro beschrijving voor dit bedrijf.</p>" %>
                 </div>
-                <p>
-                  Open vacatures: <%= member.vacancies.length %>
-                </p>
               </li>
             </ul>
           </article>
         </section>
+        <% if (member.vacancies.length > 0) { %>
+        <section class="hero">
+          <article class="content">
+            <h1><%= member.vacancies.length %> open vacatures</h1>
+          </article>
+        </section>
+        <section class="block vacancies" id="vacancies">
+          <article class="content">
+              <div class="vacancies">
+                <ul>
+                  <% member.vacancies.forEach(item => { %>
+                    <%- include('components/vacancy', { item: item }) %>
+                  <% }) %>                    
+                </ul>
+              </div>
+              
+          </article>
+        </section>
+        <% } %>
         <section class="block">
           <article class="content">
             <a style="padding-inline-start: 0; padding-inline-end: 0;" class="btn secondary line-animation" href="/members">
