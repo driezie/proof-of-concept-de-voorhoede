@@ -786,6 +786,10 @@ section.members li {
   gap: 0;
 }
 
+section.members a, section.block a {
+  color: var(--primary-color)
+}
+
 .banner {
   /* block aspect */
   aspect-ratio: 16 / 16;

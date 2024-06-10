@@ -13,17 +13,12 @@
           <article class="content">
             <ul class="grid grid3x">
               <li>
-                
-                <h3>
-                  Over <%= member.title %>
-                </h3>
-                <p>
-                  <%= member.description || "Er is momenteel geen beschrijving voor dit bedrijf." %>
-                </p>
+                <div class="description">
+                  <%- member.description || "<p>Er is momenteel geen intro beschrijving voor dit bedrijf.</p>" %>
+                </div>
                 <p>
                   Open vacatures: <%= member.vacancies.length %>
                 </p>
-                
               </li>
             </ul>
           </article>
@@ -37,6 +32,11 @@
                Ga terug naar overzicht</a>
           </article>
         </section>
+        <script>
+          document.querySelectorAll(".block .content .description a").forEach(function(link) {
+              link.classList.add("line-animation");
+          });
+        </script>
         <%- include('components/footer') %>
     </div>
   </body>
