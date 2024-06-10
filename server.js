@@ -4,147 +4,76 @@ import { makeFetchRequest } from './helpers/fetchManager.js';
 const app = express();
 const apiUrl = "https://fdnd-agency.directus.app/items";
 
-// Set ejs as the template engine and configure the views directory
+// Stel ejs in als de template engine en configureer de views directory
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
-// Serve static files from the 'public' directory
+// Bedien statische bestanden vanuit de 'public' directory
 app.use(express.static('public'));
 
-// Parse URL-encoded bodies
+// Parseer URL-gecodeerde bodies
 app.use(express.urlencoded({ extended: true }));
 
-// Example route to render a page with the selected language
 
-// Import and use cookie-parser middleware
-import cookieParser from 'cookie-parser';
-app.use(cookieParser());
+// Fetch de data van de API
+const fetchFromApi = (endpoint) => {
+  return makeFetchRequest(apiUrl + endpoint).then(response => response.json());
+};
 
-// Route to set language preference and save in cookie
-app.get('/lang/:language', (req, res) => {
-  const { language } = req.params;
-  res.cookie('language', language, { maxAge: 900000, httpOnly: true }); // Set cookie for 15 minutes
-  res.redirect('/');
-});
-
-// Route to render page with language preference from cookie
 app.get('/', (req, res) => {
-  const lang = req.cookies.language || 'nl'; // Get language from cookie or default to Dutch
-  // Make a request to fetch data based on the selected language
-  makeFetchRequest(apiUrl, lang)
-    .then(data => {
-      // Render the view with the fetched data and the selected language
-      res.render('index', { data, lang });
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-      res.status(500).send('Internal Server Error');
-    });
-});
-
-
-// Route to render page with language preference from cookie
-app.get('/vacancies', (req, res) => {
-  const lang = req.cookies.language || 'nl'; // Get language from cookie or default to Dutch
-  // Make a request to fetch data based on the selected language
-  makeFetchRequest(apiUrl, lang)
-    .then(data => {
-      // Render the view with the fetched data and the selected language
-      res.render('vacancies', { data, lang });
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-      res.status(500).send('Internal Server Error');
-    });
-});
-
-
-
-// Route to render page with language preference from cookie
-app.get('/about', (req, res) => {
-  const lang = req.cookies.language || 'nl'; // Get language from cookie or default to Dutch
-  // Make a request to fetch data based on the selected language
-  makeFetchRequest(apiUrl, lang)
-    .then(data => {
-      // Render the view with the fetched data and the selected language
-      res.render('about', { data, lang });
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-      res.status(500).send('Internal Server Error');
-    });
-});
-
-// Route to render page with language preference from cookie
-app.get('/news', (req, res) => {
-  const lang = req.cookies.language || 'nl'; // Get language from cookie or default to Dutch
-  // Make a request to fetch data based on the selected language
-  makeFetchRequest(apiUrl, lang)
-    .then(data => {
-      // Render the view with the fetched data and the selected language
-      res.render('news', { data, lang });
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-      res.status(500).send('Internal Server Error');
-    });
-});
-
-// Route to render page with language preference from cookie
-app.get('/members', (req, res) => {
-  const lang = req.cookies.language || 'nl'; // Get language from cookie or default to Dutch
-  // Make a request to fetch data based on the selected language
-  makeFetchRequest(apiUrl, lang)
-    .then(data => {
-      // Render the view with the fetched data and the selected language
-      res.render('members', { data, lang });
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-      res.status(500).send('Internal Server Error');
-    });
-});
-
-// Route to render page with language preference from cookie
-app.get('/contact', (req, res) => {
-  const lang = req.cookies.language || 'nl'; // Get language from cookie or default to Dutch
-  // Make a request to fetch data based on the selected language
-  makeFetchRequest(apiUrl, lang)
-    .then(data => {
-      // Render the view with the fetched data and the selected language
-      res.render('contact', { data, lang });
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-      res.status(500).send('Internal Server Error');
-    });
-});
-
-
-// Route to render page with language preference from cookie
-app.get('/cases', (req, res) => {
-  const lang = req.cookies.language || 'nl'; // Get language from cookie or default to Dutch
-  // Make a request to fetch data based on the selected language
-  makeFetchRequest(apiUrl, lang)
-    .then(data => {
-      // Render the view with the fetched data and the selected language
-      res.render('cases', { data, lang });
-    })
-    .catch(error => {
-      console.error('Error fetching data:', error);
-      res.status(500).send('Internal Server Error');
-    });
+  // Render de 'index' template met het huidige thema
+  res.render('index');
 });
 
 
 
 
+// Routes om pagina's weer te geven met de thema voorkeur
+const pages = ['vacancies', 'about', 'news', 'members', 'contact', 'cases'];
+
+
+pages.forEach(page => {
+  app.get(`/${page}`, (req, res) => {
+
+    if (page === 'vacancies') {
+      fetchFromApi('/dda_agencies_vacancies').then(data => {
+        console.log(data);
+        // Render de template voor elke pagina met het huidige thema en de data van de API
+        res.render(page, { data: data.data });
+      });
+      return;
+    } else if (page === 'members') {
+      fetchFromApi('/dda_agencies').then(data => {
+        console.log(data);
+        // Render de template voor elke pagina met het huidige thema en de data van de API
+        res.render(page, { data: data.data });
+      });
+      return;
+    }
+    // Render de template voor elke pagina met het huidige thema
+    res.render(page);
+  });
+});
+
+
+const detailPages = ['member'];
+
+detailPages.forEach(page => {
+  if (page === 'member') {
+    app.get(`/${page}/:id`, (req, res) => {
+      fetchFromApi('/dda_agencies/' + req.params.id).then(data => {
+        // Render the template for each page with the current theme and the data from the API
+        res.render(page, { member: data.data });
+      });
+    });
+  }
+});
 
 
 // Set the port number
 app.set('port', process.env.PORT || 8000);
 
-// Start the Express server
+// Start de Express server
 app.listen(app.get('port'), function() {
-  console.log(`Application started on http://localhost:${app.get('port')}`);
+  console.log(`Applicatie gestart op http://localhost:${app.get('port')}`);
 });

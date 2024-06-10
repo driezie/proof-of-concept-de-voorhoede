@@ -1,13 +1,37 @@
 <!DOCTYPE html>
-<html lang="<%= lang %>" dir="<%= lang === 'ar' ? 'rtl' : 'ltr' %>">
+<html lang="nl">
   <%- include('components/head', pageTitle = "Vacatures") %>
-  <body>
     <article class="container">
         <%- include('components/header') %>
         <section class="hero">
           <article class="content">
             <h1>Vacatures</h1>
             <p>Bekijk hier alle vacatures</p>
+          </article>
+        </section>
+
+        <section class="vacancies">
+          <article class="content">
+            <ul class="grid grid1x">
+              <% data.forEach(item=> { %>
+              <li>
+                <picture>
+                  <img src="https://fdnd-agency.directus.app/assets/<%= item.photo %>" alt="">
+                </picture>
+                <picture class="logo">
+                  <img src="https://fdnd-agency.directus.app/assets/<%= item.logo %>" alt="">
+                </picture>
+                <h3>
+                  <%= item.title %>
+                </h3>
+                <p>
+                  <%= item.description %>
+                </p>
+                <p>
+                </p>
+              </li>
+              <% }) %>
+            </ul>
           </article>
         </section>
         <%- include('components/footer') %>

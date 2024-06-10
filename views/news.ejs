@@ -1,31 +1,86 @@
 <!DOCTYPE html>
-<html lang="<%= lang %>" dir="<%= lang === 'ar' ? 'rtl' : 'ltr' %>">
+<html lang="nl">
   <%- include('components/head', pageTitle = "Nieuws") %>
-  <body>
     <article class="container">
         <%- include('components/header') %>
 
         <section class="hero">
           <article class="content">
             <h1>Nieuws</h1>
-            <p>Bekijk hier het nieuws</p>
-              
+            <p>Dutch Digital Agencies vertegenwoordigt de beste digitale bureaus van Nederland. Op deze pagina delen we nieuws en opinies over onze branche en digitale innovatie in Nederland.</p>
+              <p>
+                Op zoek naar een expertvisie, cijfers of rapportages? Mail gerust: <a class="line-animation" href="mailto:pers@dutchdigitalagencies.com">pers@dutchdigitalagencies.com</a>.
+              </p>
           </article>
         </section>
-
-        <section class="block">
+        
+        <section class="info">
+          <div class="title">
+            <h2>laatste Nieuws</h2>
+          </div>
+          <span class="devider"></span>
           <article class="content">
-            <h3>fuerghui</h3>
-            <p>jgrheiughqiueahiu hier het nieuws</p>
-              
-          </article>
-        </section>
+            <ul class="grid grid4x with-lines">
+              <li>
+                <picture>
+                  <img src="/images/news/news1.png" alt="">
+                </picture>
+                <p>
+                  03 Juni 2024
+                </p>
+                <h3>
+                  Leer het DDA bestuur kennen
+                </h3>
+                <a href="" class="btn primary">
+                  Lees meer
+                </a>
+              </li>
 
-        <section class="hero" id="events">
-          <article class="content">
-            <h1>Evenementen</h1>
-            <p>Bekijk hier het nieuws</p>
-              
+              <li>
+                <picture>
+                  <img src="/images/news/news2.png" alt="">
+                </picture>
+                <p>
+                  23 Mei 2024
+                </p>
+                <h3>
+                  Waarom een betere ISO-norm de weg vrijmaakt voor een inclusief internet in de toekomst
+                </h3>
+                <a href="" class="btn primary">
+                  Lees meer
+                </a>
+              </li>
+
+              <li>
+                <picture>
+                  <img src="/images/news/news3.png" alt="">
+                </picture>
+                <p>
+                  13 April 2024
+                </p>
+                <h3>
+                  Partnerbijdrage: Rootnet, een managed hosting bedrijf voor digital agencies
+                </h3>
+                <a href="" class="btn primary">
+                  Lees meer
+                </a>
+              </li>
+
+              <li>
+                <picture>
+                  <img src="/images/news/news4.png" alt="">
+                </picture>
+                <p>
+                  23 April 2024
+                </p>
+                <h3>
+                  Leer het DDA bestuur kennen
+                </h3>
+                <a href="" class="btn primary">
+                  Lees meer
+                </a>
+              </li>
+            </ul>
           </article>
         </section>
 

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="nl">
+  <%- include('components/head', pageTitle = "Onze leden") %>
+    <article class="container">
+        <%- include('components/header') %>
+
+        <section class="hero">
+          <article class="content">
+            <h1><%= member.title %></h1>
+          </article>
+        </section>
+        <section class="block">
+          <article class="content">
+            <ul class="grid grid3x">
+              <li>
+                
+                <h3>
+                  Over <%= member.title %>
+                </h3>
+                <p>
+                  <%= member.description || "Er is momenteel geen beschrijving voor dit bedrijf." %>
+                </p>
+                <p>
+                  Open vacatures: <%= member.vacancies.length %>
+                </p>
+                
+              </li>
+            </ul>
+          </article>
+        </section>
+        <section class="block">
+          <article class="content">
+            <a style="padding-inline-start: 0; padding-inline-end: 0;" class="btn secondary line-animation" href="/members">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+               Ga terug naar overzicht</a>
+          </article>
+        </section>
+        <%- include('components/footer') %>
+    </div>
+  </body>
+</html>
+

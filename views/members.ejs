@@ -1,99 +1,43 @@
 <!DOCTYPE html>
-<html lang="<%= lang %>" dir="<%= lang === 'ar' ? 'rtl' : 'ltr' %>">
+<html lang="nl">
   <%- include('components/head', pageTitle = "Onze leden") %>
-  <body>
     <article class="container">
         <%- include('components/header') %>
         <section class="hero">
           <article class="content">
             <h1>Onze leden</h1>
             <p>De beste digitale bureaus van Nederland zijn verenigd in Dutch Digital Agencies. Filter op provincie en omvang en zoek contact met het bureau dat het beste bij past bij je uitdaging. 
-              Wil je meer weten over het lidmaatschap? Ga dan naar <a href="">deze pagina</a> voor meer informatie.</p>
+              Wil je meer weten over het lidmaatschap? Ga dan naar <a class="line-animation" href="">deze pagina</a> voor meer informatie.</p>
           </article>
         </section>
         <section class="members">
           <article class="content">
             <ul class="grid grid3x">
+              <% data.forEach(item=> { %>
               <li>
-                <picture>
-                  <img src="/images/werknemers/elvire-jaspers.png" alt="">
-                </picture>
+                <div class="banner">
+                  <picture class="banner">
+                    <img src="https://fdnd-agency.directus.app/assets/<%= item.photo %>" alt="">
+                  </picture>
+                  <picture class="logo">
+                    <img src="https://fdnd-agency.directus.app/assets/<%= item.logo %>" alt="">
+                  </picture>
+                </div>
                 <h3>
-                  Elvire Jaspers
+                  <%= item.title %>
                 </h3>
                 <p>
-                  CEO WeAreBrain, portefeuille PR & Communicatie
+                  <%= item.description || "Er is momenteel geen beschrijving voor dit bedrijf." %>
                 </p>
-              </li>
-              <li>
-                <picture>
-                  <img src="/images/werknemers/karlijn-koekoek.jpg" alt="">
-                </picture>
-                <h3>
-                  Karlijn Koekoek
-                </h3>
                 <p>
-                  Bureaumanagement
+                  Open vacatures: <%= item.vacancies.length %>
                 </p>
+                <div class="buttons">
+                  <a class="btn secondary line-animation" title="bekijk alle vacatures" href="/member/<%= item.id %>#vacancies">Bekijk open vacatures</a>
+                  <a class="btn primary" title="word lid" href="/member/<%= item.id %>">Bekijk profiel</a>
+                </div>
               </li>
-              <li>
-                <picture>
-                  <img src="/images/werknemers/mark-landman2.jpg" alt="">
-                </picture>
-                <h3>
-                  Mark Landman
-                </h3>
-                <p>
-                  Managing partner DotControl, Voorzitter & portefeuille Belangenbehartiging
-                </p>
-              </li>
-              <li>
-                <picture>
-                  <img src="/images/werknemers/martijn-vervoordeldonk2.jpg" alt="">
-                </picture>
-                <h3>
-                  Martijn Vervoordeldonk
-                </h3>
-                <p>
-                  Partnership manager iO 's-Hertogenbosch, Penningmeester
-                </p>
-                
-              </li>
-              <li>
-                <picture>
-                  <img src="/images/werknemers/nienke-van-heusden2.jpg" alt="">
-                </picture>
-                <h3>
-                  Nienke van Heusden
-                </h3>
-                <p>
-                  Managing Director Kaliber, portefeuille Events
-                </p>
-                
-              </li>
-              <li>
-                <picture>
-                  <img src="/images/werknemers/pieter-aarts2.jpg" alt="">
-                </picture>
-                <h3>
-                  Pieter Aarts
-                </h3>
-                <p>
-                  Principal Service Design, Ordina Digital, portefeuille Kennis
-                </p>
-                
-              </li>
-              <li>
-                <picture>
-                  <img src="/images/werknemers/fenna-van-raaij2.jpg" alt="">
-                </picture>
-                <h3>
-                  Fenna van Raaij
-                </h3>
-                <p>
-                  Bureaumanagement
-                </p>
-              </li>
+              <% }) %>
             </ul>
           </article>
         </section>
