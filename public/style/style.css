@@ -97,6 +97,7 @@ img {
 
 html {
   scroll-behavior: smooth;
+  scroll-padding: 127px;
 }
 
 body {
@@ -113,6 +114,80 @@ img {
 
 @view-transition {
   navigation: auto;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+form fieldset {
+  border: none;
+  padding: 0;
+} 
+
+form fieldset legend {
+  font-family: var(--font-secondary);
+  font-size: 1.2rem;
+  color: var(--primary-color);
+}
+
+form input, form textarea {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  padding: 1rem 1.5rem;
+  border: var(--line-px) var(--line-style) var(--primary-color);
+  background-color: var(--secondary-color-kiezel);
+}
+
+input:focus, textarea {
+  border-radius: 0;
+  outline-color: var(--extra-outline);
+  background-color: var(--secondary-color-ghost);
+}
+
+:focus {
+  outline-color: var(--extra-outline);
+}
+
+input[type="submit"], button.btn-reset {
+  background: var(--primary-color);
+  color: var(--secondary-color-kiezel);
+  font-family: var(--font-secondary);
+  padding: var(--default-button-padding);
+  text-decoration: none;
+  border-radius: var(--default-button-border-radius);
+  text-transform: uppercase;
+  border: none;
+}
+
+select {
+  font-family: var(--font-primary);
+  font-size: 1rem;
+  padding: 8px;
+  border: var(--line-px) var(--line-style) var(--primary-color);
+  border-radius: var(--default-button-border-radius);
+}
+
+select:focus {
+  outline-color: var(--extra-outline);
+}
+
+.filter-details fieldset {
+  display: flex;
+  gap: 16px;
+  align-items: flex-end;
+}
+
+.filter-details fieldset > * {
+  flex: 1;
+}
+
+form label {
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  color: var(--primary-color);
 }
 
 .justify-content-between {
@@ -931,7 +1006,7 @@ section.hero article.vacancy {
     display: none;
   }
 
-  section.hero {
+  section.hero.with-image {
     flex-direction: row;
   }
 

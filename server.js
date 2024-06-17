@@ -29,24 +29,41 @@ const pages = ['vacancies', 'about', 'news', 'members', 'contact', 'cases'];
 
 pages.forEach(page => {
   app.get(`/${page}`, (req, res) => {
-
     if (page === 'vacancies') {
-      fetchFromApi('/dda_agencies_vacancies?fields=*.*.*').then(data => {
-        // Render de template voor elke pagina met en de data van de API
-        res.render(page, { data: data.data });
+      let endpoint = '/dda_agencies_vacancies?fields=*.*.*';
+      if (req.query.s) {
+        endpoint += `&filter[_or][0][title][_contains]=${req.query.s}&filter[_or][1][description][_contains]=${req.query.s}&filter[_or][2][employment][_contains]=${req.query.s}`;
+        console.log(endpoint);
+      }
+      fetchFromApi(endpoint).then(data => {
+        // Render the template for the members page with the data from the API
+        res.render(page, { data: data.data || []});
+      }).catch(error => {
+        console.error('Error fetching members:', error);
+        res.status(500).send('Internal Server Error');
       });
-      return;
+
     } else if (page === 'members') {
-      fetchFromApi('/dda_agencies').then(data => {
-        // Render de template voor elke pagina en de data van de API
-        res.render(page, { data: data.data });
+      let endpoint = '/dda_agencies';
+      if (req.query.s) {
+        endpoint += `?filter[_or][0][title][_contains]=${req.query.s}&filter[_or][1][summary][_contains]=${req.query.s}&filter[_or][2][description][_contains]=${req.query.s}&filter[_or][3][vacancies][title][_contains]=${req.query.s}&filter[_or][4][vacancies][description][_contains]=${req.query.s}&filter[_or][5][vacancies][employment][_contains]=${req.query.s}`;
+        console.log(endpoint);
+      }
+      fetchFromApi(endpoint).then(data => {
+        // Render the template for the members page with the data from the API
+        res.render(page, { data: data.data || []});
+      }).catch(error => {
+        console.error('Error fetching members:', error);
+        res.status(500).send('Internal Server Error');
       });
-      return;
+    } else {
+      // Render the template for other pages
+      res.render(page);
     }
-    // Render de template voor elke pagina 
-    res.render(page);
   });
 });
+
+
 
 const detailPages = ['member', 'vacancy', 'member/next', 'vacancy/next'];
 
@@ -55,14 +72,14 @@ detailPages.forEach(page => {
     app.get(`/${page}/:id`, (req, res) => {
       fetchFromApi('/dda_agencies/' + req.params.id + "?fields=*.*.*").then(data => {
         // Render de pagina voor elk lid en de data van de API
-        res.render(page, { member: data.data });
+        res.render(page, { member: data.data || [] });
       });
     });
   } else if (page === 'vacancy') {
     app.get(`/${page}/:id`, (req, res) => {
       fetchFromApi('/dda_agencies_vacancies/' + req.params.id + "?fields=*.*.*").then(data => {
         // Render de pagina voor elke vacature en de data van de API
-        res.render(page, { data: data.data });
+        res.render(page, { data: data.data || []});
       });
     });
   } else if (page === 'member/next') {

@@ -4,12 +4,17 @@
     <article class="container">
         <%- include('components/header') %>
 
-        <section class="hero">
+        <section class="hero members">
           <article class="content">
             <h1>Onze leden</h1>
             <p>De beste digitale bureaus van Nederland zijn verenigd in Dutch Digital Agencies. Filter op provincie en omvang en zoek contact met het bureau dat het beste bij past bij je uitdaging. 
               Wil je meer weten over het lidmaatschap? Ga dan naar <a aria-label="deze pagina" class="line-animation" href="">deze pagina</a> voor meer informatie.</p>
           </article>
+          
+          <form class="search-form" aria-label="Zoekformulier">
+            <label for="search-field" class="visually-hidden">Zoeken</label>
+            <input type="search" id="search-field" class="search-field" placeholder="Zoeken" value="" name="s">
+          </form>
         </section>
 
         <section class="members">
