@@ -9,6 +9,7 @@
             <h1><%= member.title %></h1>
           </article>
         </section>
+
         <section class="block">
           <article class="content">
             <ul class="grid grid3x">
@@ -20,12 +21,14 @@
             </ul>
           </article>
         </section>
+
         <% if (member.vacancies.length > 0) { %>
         <section class="hero">
           <article class="content">
             <h1><%= member.vacancies.length %> open vacatures</h1>
           </article>
         </section>
+        
         <section class="block vacancies" id="vacancies">
           <article class="content">
               <div class="vacancies">
@@ -39,6 +42,7 @@
           </article>
         </section>
         <% } %>
+
         <section class="block">
           <article class="content">
             <a aria-label="Terug naar overzicht" style="padding-inline-start: 0; padding-inline-end: 0;" class="btn secondary line-animation" href="/members">
@@ -49,6 +53,7 @@
             </a>
           </article>
         </section>
+        
         <script>
           document.querySelectorAll(".block .content .description a").forEach(function(link) {
               link.classList.add("line-animation");

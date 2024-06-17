@@ -1,10 +1,7 @@
 <li class="vacancy">
     <div class="title">
-        <h3>
-            <%= item.title %>
-        </h3>
+        <h3><%= item.title %></h3>
         <a aria-label="Bekijk vacature" class="btn primary" href="/vacancy/<%= item.id %>">Bekijk vacature</a>
-
     </div>
     
     <div class="details">
@@ -29,6 +26,4 @@
             <p>Baan: <%= item.employment %></p>
         <% } %>
     </div>
-    
-    
 </li>

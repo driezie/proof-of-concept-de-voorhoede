@@ -3,6 +3,7 @@
   <%- include('components/head', pageTitle = "Onze leden") %>
     <article class="container">
         <%- include('components/header') %>
+
         <section class="hero">
           <article class="content">
             <h1>Onze leden</h1>
@@ -10,6 +11,7 @@
               Wil je meer weten over het lidmaatschap? Ga dan naar <a aria-label="deze pagina" class="line-animation" href="">deze pagina</a> voor meer informatie.</p>
           </article>
         </section>
+
         <section class="members">
           <article class="content">
             <ul class="grid grid3x">
@@ -41,11 +43,13 @@
             </ul>
           </article>
         </section>
+
         <script>
           document.querySelectorAll(".members .content .description a").forEach(function(link) {
               link.classList.add("line-animation");
           });
         </script>
+        
         <%- include('components/footer') %>
     </div>
   </body>
