@@ -67,7 +67,6 @@
 
   --font-fallback: sans-serif, monospace;
 
-
   /* paddding/layout */
   --general-padding: 16px;
   --line-px: 1px;
@@ -90,59 +89,6 @@ body.darkmode {
   background: var(--primary-color);
   color: var(--secondary-color-kiezel);
 }
-/* 
-@property --line-size {
-  syntax: '<length>';
-  initial-value: 0px;
-  inherits: false;
-}
-
-@property --line-color {
-  syntax: '<color>';
-  initial-value: black;
-  inherits: false;
-}
-
-@keyframes line-animation {
-  from {
-      --line-size: 1px;
-      transition: all 0.3s ease-in;
-  }
-  to {
-      --line-size: 10px;
-      transition: all 0.3s ease-out; 
-  }
-}
-
-@keyframes line-color-rainbow {
-  0% {
-    --line-color: red;
-  }
-  25% {
-    --line-color: orange;
-  }
-  50% {
-    --line-color: yellow;
-  }
-  75% {
-    --line-color: green;
-  }
-  100% {
-    --line-color: blue;
-  }
-}
-
-html {
-  animation: line-color-rainbow .3s infinite alternate;
-  animation-delay: 0.4s;
-  background-color: var(--line-color);
-}
-
-body * {
-  animation: line-animation .3s infinite alternate, line-color-rainbow .3s infinite alternate;
-  background-color: var(--line-color);
-  border: var(--line-size) solid var(--line-color);
-} */
 
 img {
   max-width: 100%;
@@ -276,10 +222,6 @@ body :has(.navigation ul.menu.show) nav {
   background: transparent;
   border: none;
 }
-
-
-
-
 
 .navigation nav > ul > li > button {
   cursor: pointer;
@@ -489,7 +431,6 @@ section.hero .content .buttons .btn.secondary {
 }
 
 .btn.secondary {
-  
   width: fit-content;
   background: var(--secondary-color-kiezel);
   color: var(--primary-color);
@@ -566,6 +507,7 @@ section.info img {
   object-fit: cover;
   border-radius: 16px;
 }
+
 section.events {
   margin: 0 var(--margin-sides);
   padding: 80px 0;
@@ -763,7 +705,6 @@ section.block p {
   text-wrap: balance;
   max-width: 540px;
   max-width: 960px;
-  /* max-width: 60ch; */
 }
 
 section.block p a {
@@ -783,7 +724,6 @@ section.block video {
 section.block video source {
   object-fit: cover;
 }
-
 
 .vacancies ul {
   list-style-type: none;
@@ -841,7 +781,6 @@ section.members a, section.block a {
 }
 
 .banner {
-  /* block aspect */
   aspect-ratio: 16 / 16;
   border-radius: 16px;
   overflow: hidden;
@@ -909,7 +848,6 @@ section.vacancies ul {
   padding-block-start: 10px;
   grid-template-columns: repeat(1, 1fr);
 } 
-
 
 @media screen and (min-width: 768px) {
   body {
@@ -1016,9 +954,6 @@ section.vacancies ul {
   .grid.with-lines li:nth-last-child(1)::before {
     display: none;
   }
-
-  /* Now I'll make this work with a grid with 3 items */
-
 
   section.events h2 {
     font-size: 4.3rem;
