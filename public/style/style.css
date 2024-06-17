@@ -95,8 +95,11 @@ img {
   height: auto;
 }
 
-body {
+html {
   scroll-behavior: smooth;
+}
+
+body {
   max-width: 1600px;
   margin: 0 auto;
   padding: var(--general-padding);
@@ -673,6 +676,19 @@ section.block {
   padding: 80px 0;
   border-block-end: var(--line-px) var(--line-style) var(--primary-color);
 }
+
+section.block .description ul {
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  padding-block-end: 30px;
+}
+
+section.block .description ul li {
+  display: list-item;
+  list-style: disc;
+}
+
 
 
 section.block.with-image {
