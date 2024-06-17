@@ -1,4 +1,5 @@
 <%- include('./partials/head') %>
+
 <article class="hero">
     <section>
         <h1>Welkom Daan</h1>
@@ -13,8 +14,6 @@
             </select>
             <button class="primairy-button" type="submit">Rooster Bekijken</button>
         </form>
-
-
     </section>
     <img src="/img/hero.png" alt="planner" width="400" height="400">
 </article>
@@ -24,16 +23,11 @@
     <h2>Er is nog geen rooster geselecteerd</h2>
 </section>
 
-
-
-
-
 <script>
     // Voeg een event listener toe aan het formulier met id 'weekForm'
     document.getElementById('weekForm').addEventListener('submit', function(event) {
         // Voorkom standaardgedrag van het formulier (zoals het opnieuw laden van de pagina)
         event.preventDefault();
-
 
         // Haal de waarde op van het geselecteerde weekId uit de dropdown met id 'weekSelect'
         const weekId = document.getElementById('weekSelect').value;
@@ -73,24 +67,4 @@
     }
 </script>
 
-
-
-
 <%- include('./partials/foot') %>
-
-
-<!--<section class="planner">-->
-<!--    <ul class="weeks">-->
-<!--        <form id="formWeek1/6" method="GET">-->
-<!--        <li><button id="buttonWeek1/6" class="secondairy-button" type="submit">Week 1/6</button></li>-->
-<!--        </form>-->
-<!--        <li><button class="secondairy-button">Week 6/12</button></li>-->
-<!--        <li><button class="secondairy-button">Week 12/18</button></li>-->
-<!--        <li><button class="secondairy-button">Week 18/24</button></li>-->
-<!--        <li><button class="secondairy-button">Week 24/30</button></li>-->
-<!--        <li><button class="secondairy-button">Week 30/36</button></li>-->
-<!--        <li><button class="secondairy-button">Week 36/42</button></li>-->
-<!--        <li><button class="secondairy-button">Week 42/48</button></li>-->
-<!--        <li><button class="secondairy-button">Week 48/52</button></li>-->
-<!--    </ul>-->
-<!--</section>-->
