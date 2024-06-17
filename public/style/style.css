@@ -108,6 +108,16 @@ img {
   border-radius: 16px;
 }
 
+@view-transition {
+  navigation: auto;
+}
+
+.justify-content-between {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row !important;
+}
+
 body > .container {
   position: relative;
   min-height: calc(100vh - (2 * var(--general-padding)));
