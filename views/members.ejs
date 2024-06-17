@@ -7,7 +7,7 @@
           <article class="content">
             <h1>Onze leden</h1>
             <p>De beste digitale bureaus van Nederland zijn verenigd in Dutch Digital Agencies. Filter op provincie en omvang en zoek contact met het bureau dat het beste bij past bij je uitdaging. 
-              Wil je meer weten over het lidmaatschap? Ga dan naar <a class="line-animation" href="">deze pagina</a> voor meer informatie.</p>
+              Wil je meer weten over het lidmaatschap? Ga dan naar <a aria-label="deze pagina" class="line-animation" href="">deze pagina</a> voor meer informatie.</p>
           </article>
         </section>
         <section class="members">
@@ -33,8 +33,8 @@
                   Open vacatures: <%= item.vacancies.length %>
                 </p>
                 <div class="buttons">
-                  <a class="btn secondary line-animation" title="bekijk open vacatures" href="/member/<%= item.id %>#vacancies">Bekijk open vacatures</a>
-                  <a class="btn primary" title="Bekijk profiel" href="/member/<%= item.id %>">Bekijk profiel</a>
+                  <a aria-label="Bekijk alle vacatures" class="btn secondary line-animation" href="/member/<%= item.id %>#vacancies">Bekijk open vacatures</a>
+                  <a aria-label="Bekijk profiel" class="btn primary" href="/member/<%= item.id %>">Bekijk profiel</a>
                 </div>
               </li>
               <% }) %>
