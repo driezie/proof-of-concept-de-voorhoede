@@ -1,4 +1,8 @@
 <li class="vacancy">
+    <div class="image">
+        <img src="https://fdnd-agency.directus.app/assets/<%= item.photo.id %>" alt="<%= item.title %>" width="<%= item.photo.width %>" height="<%= item.photo.height %>">
+    </div>
+
     <div class="title">
         <h3><%= item.title %></h3>
         <a aria-label="Bekijk vacature" class="btn primary" href="/vacancy/<%= item.id %>">Bekijk vacature</a>

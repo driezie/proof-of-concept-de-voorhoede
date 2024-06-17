@@ -31,7 +31,7 @@ pages.forEach(page => {
   app.get(`/${page}`, (req, res) => {
 
     if (page === 'vacancies') {
-      fetchFromApi('/dda_agencies_vacancies').then(data => {
+      fetchFromApi('/dda_agencies_vacancies?fields=*.*.*').then(data => {
         // Render de template voor elke pagina met en de data van de API
         res.render(page, { data: data.data });
       });
@@ -53,21 +53,21 @@ const detailPages = ['member', 'vacancy', 'member/next', 'vacancy/next'];
 detailPages.forEach(page => {
   if (page === 'member') {
     app.get(`/${page}/:id`, (req, res) => {
-      fetchFromApi('/dda_agencies/' + req.params.id + "?fields=*.*").then(data => {
+      fetchFromApi('/dda_agencies/' + req.params.id + "?fields=*.*.*").then(data => {
         // Render de pagina voor elk lid en de data van de API
         res.render(page, { member: data.data });
       });
     });
   } else if (page === 'vacancy') {
     app.get(`/${page}/:id`, (req, res) => {
-      fetchFromApi('/dda_agencies_vacancies/' + req.params.id + "?fields=*.*").then(data => {
+      fetchFromApi('/dda_agencies_vacancies/' + req.params.id + "?fields=*.*.*").then(data => {
         // Render de pagina voor elke vacature en de data van de API
         res.render(page, { data: data.data });
       });
     });
   } else if (page === 'member/next') {
     app.get('/member/next/:id', (req, res) => {
-      fetchFromApi('/dda_agencies?fields=*.*').then(allMembersData => {
+      fetchFromApi('/dda_agencies?fields=*.*.*').then(allMembersData => {
         const members = allMembersData.data;
         // Bekijk de huidige positie van het lid in de lijst
         const currentMemberIndex = members.findIndex(member => member.id == req.params.id);
@@ -90,7 +90,7 @@ detailPages.forEach(page => {
   
   } else if (page === 'vacancy/next') {
     app.get('/vacancy/next/:id/:agency_id', (req, res) => {
-      fetchFromApi('/dda_agencies/' + req.params.agency_id + '?fields=*.*').then(agencyData => {
+      fetchFromApi('/dda_agencies/' + req.params.agency_id + '?fields=*.*.*').then(agencyData => {
         const vacancies = agencyData.data.vacancies;
 
         // Bekijk de huidige positie van de vacature in de lijst

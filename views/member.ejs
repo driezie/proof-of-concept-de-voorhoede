@@ -10,7 +10,7 @@
           </article>
         </section>
 
-        <section class="block">
+        <section class="block with-image justify-content-between">
           <article class="content">
             <ul class="grid grid3x">
               <li>
@@ -20,6 +20,12 @@
               </li>
             </ul>
           </article>
+
+          <div class="block-banner">
+            <picture>
+              <img src="https://fdnd-agency.directus.app/assets/<%= member.photo.id %>" alt="<%= member.title %>" width="<%= member.photo.width %>" height="<%= member.photo.height %>">
+            </picture>
+          </div>
         </section>
 
         <% if (member.vacancies.length > 0) { %>

@@ -6,12 +6,12 @@
         <%- include('components/header') %>
 
         <section class="hero">
-          <article class="content">
+          <article class="content vacancy">
             <h1><%= data.title %></h1>
           </article>
         </section>
 
-        <section class="block">
+        <section class="block with-image justify-content-between">
           <article class="content">
             <ul class="grid grid3x">
               <li>
@@ -21,6 +21,12 @@
               </li>
             </ul>
           </article>
+
+          <div class="block-banner">
+            <picture>
+              <img src="https://fdnd-agency.directus.app/assets/<%= data.photo.id %>" alt="<%= data.title %>" width="<%= data.photo.width %>" height="<%= data.photo.height %>">
+            </picture>
+          </div>
         </section>
 
         <section class="block">

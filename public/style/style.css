@@ -389,7 +389,7 @@ section.hero .hero-banner:nth-child(2n + 2) {
  flex: 0 0 calc(50% - 50px);
 }
 
-section.hero .hero-banner img {
+section.hero .hero-banner img, section.block .block-banner img {
   height: 100%;
   object-fit: cover;
   border-radius: 16px;
@@ -674,8 +674,23 @@ section.block {
   border-block-end: var(--line-px) var(--line-style) var(--primary-color);
 }
 
-section.block .title {
-  margin-bottom: 40px;
+
+section.block.with-image {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+section.block.with-image .content {
+  flex: 1;
+}
+
+section.block.with-image .block-banner {
+  flex: 1;
+}
+
+section.block.with-image .block-banner img {
+  height: 400px;
 }
 
 section.block .content {
@@ -762,6 +777,17 @@ ul li.vacancy .title {
   display: flex;
   flex-direction: column;
   gap: 16px;
+}
+
+ul li.vacancy .image {
+  max-width: 10em;
+  
+}
+
+ul li.vacancy .image img {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background-color: var(--secondary-color-ghost)
 }
 
 ul li.vacancy .details {
@@ -859,6 +885,12 @@ section.vacancies ul {
   grid-template-columns: repeat(1, 1fr);
 } 
 
+
+section.hero article.vacancy {
+  flex: unset;
+
+}
+
 @media screen and (min-width: 768px) {
   body {
     --margin-sides: 48px;
@@ -895,9 +927,13 @@ section.vacancies ul {
     align-items: center;
     flex-direction: row;
   }
+
   .grid {
-    grid-template-columns: repeat(2, 1fr);
     position: relative; /* Ensure positioning context for pseudo-elements */
+  }
+
+  .grid.team, .grid.about, .grid.news {
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .grid.with-lines li {
@@ -1012,6 +1048,7 @@ section.vacancies ul {
   display: inline-block;
   position: relative;
   text-decoration: none !important;
+  width: fit-content;
 }
 
 .line-animation::after {
