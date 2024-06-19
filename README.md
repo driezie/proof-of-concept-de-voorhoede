@@ -1,6 +1,6 @@
 <h1> Dutch Digital Agency Website Redesign</h1>
 <h3 id="#Opdracht">De Opdracht</h3>
-Voor de opdrachtgever Dutch Digital Agency heb ik een concept en uitwerking mogen ontwerpen. De bedoeling was om 5 verschillende paginas te maken met API's die alle leden en vacatures zou ophalen vanuit de database van Directus. 
+Voor de opdrachtgever <a href="https://www.voorhoede.nl/">De Voorhoede</a> heb ik een concept en uitwerking mogen ontwerpen voor <a href="https://dutchdigitalagencies.com/">Dutch Digital Agency</a>. De bedoeling was om 5 verschillende paginas te maken met API's die alle leden en vacatures zou ophalen vanuit de database van Directus. 
 
 <br>
 <br>
