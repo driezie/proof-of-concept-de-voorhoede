@@ -42,7 +42,7 @@ Op deze pagina kan je meer te weten komen over het bedrijf en hoe je in contact 
 #### Over Ons pagina
 Op deze pagina lees je meer over de agency en het team die de agency runt.
 
-<h3 id="Installatie"> 🛠Installatie</h3>
+<h3 id="Installatie"> 🛠 Installatie</h3>
 <li>Clone <a href="https://github.com/driezie/proof-of-concept-de-voorhoede/">deze repository.</a></li>
 <li>Open de repository in je code-editor</li>
 <li> Open de terminal en typ 'npm install' of 'npm i'</li>
