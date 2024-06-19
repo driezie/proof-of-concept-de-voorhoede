@@ -13,7 +13,7 @@ Voor de opdrachtgever Dutch Digital Agency heb ik een concept en uitwerking moge
 
 
 
-<h3>📚Inhoudsopgave</h3>
+<h3>📚 Inhoudsopgave</h3>
 <ul>
 <li><a href="#Opdracht"> 👨🏼‍💼 Opdracht</a></li> 
 <li><a href="#Gebruik"> 👩🏽‍💻 Gebruik </a></li>  
