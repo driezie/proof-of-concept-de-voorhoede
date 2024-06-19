@@ -25,7 +25,7 @@ app.get('/', (req, res) => {
 });
 
 // Routes om pagina's weer te geven
-const pages = ['vacancies', 'about', 'news', 'members', 'contact', 'cases'];
+const pages = ['vacancies', 'about', 'news', 'members', 'contact'];
 
 pages.forEach(page => {
   app.get(`/${page}`, (req, res) => {
@@ -129,6 +129,16 @@ detailPages.forEach(page => {
       });
     });
   }
+});
+
+
+// Routes om pagina's weer te geven 404
+const pages404 = ['apply', 'sitemap', 'privacy', 'cases', '/theme/darkmode', '/theme/lightmode'];
+
+pages404.forEach(page => {
+  app.get(`/${page}`, (req, res) => {
+    res.render('404');
+  });
 });
 
 // Set the port number
