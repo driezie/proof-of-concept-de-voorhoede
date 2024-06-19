@@ -17,7 +17,7 @@ Voor de opdrachtgever GRRR heb ik een concept en uitwerking mogen ontwerpen voor
 <ul>
 <li><a href="#Opdracht"> 👨🏼‍💼 Opdracht</a></li> 
 <li><a href="#Gebruik"> 👩🏽‍💻 Gebruik </a></li>  
- <li><a href="#Installatie"> 🛠Installatie </a></li>
+<li><a href="#Installatie"> 🛠Installatie </a></li>
 <li><a href="#Kenmerken"> 📱 Kenmerken en uitleg Node, Express en EJS</a></li> 
 </ul>
    
@@ -43,19 +43,19 @@ Op deze pagina kan je meer te weten komen over het bedrijf en hoe je in contact 
 Op deze pagina lees je meer over de agency en het team die de agency runt.
 
 <h3 id="Installatie"> 🛠Installatie</h3>
-<li>Clone [deze repository.](https://github.com/driezie/proof-of-concept-de-voorhoede/)</li>
+<li>Clone <a href="https://github.com/driezie/proof-of-concept-de-voorhoede/">deze repository.</a></li>
 <li>Open de repository in je code-editor</li>
 <li> Open de terminal en typ 'npm install' of 'npm i'</li>
 <li>Door gebruik te maken van 'npm start', krijg je een lokale link waar je de code live kunt bekijken</li>
-<li>Om je project online te zetten, kun je gebruik maken van '[Render](https://render.com/)'</li>
+<li>Om je project online te zetten, kun je gebruik maken van '<a href="https://render.com/">Render</a>'</li>
         
 <h3 id="#Kenmerken"> 📱 Kenmerken</h3>
 Dit project is gemaakt met Node, Express, EJS. 
 <h4>Tools</h4>
 <ul>
-        <li> [🖥️ Visual Studio Code](https://code.visualstudio.com/)</li>
-        <li> [🖥️ Render](https://render.com/) </li>
-        <li> [🖥️ Iterm](https://iterm2.com/) (Voor Mac gebruikers)</li>
+        <li> <a href="https://code.visualstudio.com/">🖥️ Visual Studio Code</a></li>
+        <li> <a href="https://render.com/">🖥️ Render</a></li>
+        <li> <a href="https://iterm2.com/">🖥️ Iterm</a> (Voor Mac gebruikers)</li>
 </ul>
 
 <h4>Gebruikte technieken</h4>
