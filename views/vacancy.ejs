@@ -68,8 +68,19 @@
             <div class="description details-box">
               <h4>Details</h4>
               <ul>
+                <li>
+                <% 
+                let date = new Date(data.date_posted);
+                if (!isNaN(date.getTime())) { 
+                    let options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    let formattedDate = date.toLocaleDateString('nl-NL', options);
+                %>
+                Datum van post: <%= formattedDate %>
+                <% } else { %>
+                  Datum van post: Invalid Date
+                <% } %>
+                </li>
                 <li>Uren: <%= data.hours %></li>
-                <li>Datum van post: <%= data.date_posted %></li>
                 <li>Salaris: <%= data.salary || "-" %></li>
                 <li>Baan: <%= data.employment || "-" %></li>
               </ul>
