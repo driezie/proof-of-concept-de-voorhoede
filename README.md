@@ -1,33 +1,72 @@
-> _Fork_ deze leertaak en ga aan de slag. Onderstaande outline ga je gedurende deze taak in jouw eigen GitHub omgeving uitwerken. De instructie vind je in: [docs/INSTRUCTIONS.md](docs/INSTRUCTIONS.md)
+<h1> Dutch Digital Agency Website Redesign</h1>
+<h3 id="#Opdracht">De Opdracht</h3>
+Voor de opdrachtgever <a href="https://www.voorhoede.nl/">De Voorhoede</a> heb ik een concept en uitwerking mogen ontwerpen voor <a href="https://dutchdigitalagencies.com/">Dutch Digital Agency</a>. De bedoeling was om 5 verschillende paginas te maken met API's die alle leden en vacatures zou ophalen vanuit de database van Directus. 
 
-# Titel
-<!-- Geef je project een titel en schrijf in één zin wat het is -->
+<br>
+<br>
 
-## Inhoudsopgave
+![mockup1](https://github.com/driezie/proof-of-concept-de-voorhoede/assets/80174866/90f801b4-1625-48b8-8c2b-6d1216b2f722)
 
-  * [Beschrijving](#beschrijving)
-  * [Gebruik](#gebruik)
-  * [Kenmerken](#kenmerken)
-  * [Installatie](#installatie)
-  * [Bronnen](#bronnen)
-  * [Licentie](#licentie)
+<br>
 
-## Beschrijving
-<!-- Bij Beschrijving staat kort beschreven wat voor project het is en wat je hebt gemaakt -->
-<!-- Voeg een mooie poster visual toe 📸 -->
-<!-- Voeg een link toe naar Github Pages 🌐-->
+![mockup2](https://github.com/driezie/proof-of-concept-de-voorhoede/assets/80174866/3021e4d8-2052-4fc3-a126-f559b945e83c)
 
-## Gebruik
-<!-- Bij Gebruik staat de user story, hoe het werkt en wat je er mee kan. -->
 
-## Kenmerken
-<!-- Bij Kenmerken staat welke technieken zijn gebruikt en hoe. Wat is de HTML structuur? Wat zijn de belangrijkste dingen in CSS? Wat is er met JS gedaan en hoe? Misschien heb je iets met NodeJS gedaan, of heb je een framwork of library gebruikt? -->
 
-## Installatie
-<!-- Bij Instalatie staat hoe een andere developer aan jouw repo kan werken -->
+<h3>📚 Inhoudsopgave</h3>
+<ul>
+<li><a href="#Opdracht"> 👨🏼‍💼 Opdracht</a></li> 
+<li><a href="#Gebruik"> 👩🏽‍💻 Gebruik </a></li>  
+<li><a href="#Installatie"> 🛠Installatie </a></li>
+<li><a href="#Kenmerken"> 📱 Kenmerken en uitleg Node, Express en EJS</a></li> 
+</ul>
+   
+<h3 id="#Gebruik"> 👩🏽‍💻 Gebruik van website</h3>
+Op de Dutch Digital Agency websites heb je allerlij verschillende paginas.
 
-## Bronnen
+#### Home Pagina
+Op de homepagina om je allemaal te zien wat het bedrijf is en wat het inhoud. Je ziet hier allemaal nieuws, evenementen en overige informatie over het bedrijf zelf.
+
+#### Leden Pagina
+Op de leden pagina krijg je alle leden te zien die zijn aangemeld bij de agency. Je kunt hier tussen sorteren en kijken hoeveel verschillende vacatures er beschikbaar zijn per lid.
+
+#### Lid Informatie Pagina
+Als je op een lid drukt krijg je hier allemaal informatie over met details en een link naar de vacature op hun website. Op deze manier kan je alles goed georganiseerd zien.
+
+#### Vacatures Pagina
+Op deze pagina zie je alle vacatures die beschikbaar zijn. Deze zijn van alle leden en kan je dus goed zoeken naar een vacature die past bij jou zoekresultaat.
+
+#### Contact pagina
+Op deze pagina kan je meer te weten komen over het bedrijf en hoe je in contact kan komen met het bedrijf.
+
+#### Over Ons pagina
+Op deze pagina lees je meer over de agency en het team die de agency runt.
+
+<h3 id="Installatie"> 🛠 Installatie</h3>
+<li>Clone <a href="https://github.com/driezie/proof-of-concept-de-voorhoede/">deze repository.</a></li>
+<li>Open de repository in je code-editor</li>
+<li> Open de terminal en typ 'npm install' of 'npm i'</li>
+<li>Door gebruik te maken van 'npm start', krijg je een lokale link waar je de code live kunt bekijken</li>
+<li>Om je project online te zetten, kun je gebruik maken van '<a href="https://render.com/">Render</a>'</li>
+        
+<h3 id="#Kenmerken"> 📱 Kenmerken</h3>
+Dit project is gemaakt met Node, Express, EJS. 
+<h4>Tools</h4>
+<ul>
+        <li> <a href="https://code.visualstudio.com/">🖥️ Visual Studio Code</a></li>
+        <li> <a href="https://render.com/">🖥️ Render</a></li>
+        <li> <a href="https://iterm2.com/">🖥️ Iterm</a> (Voor Mac gebruikers)</li>
+</ul>
+
+<h4>Gebruikte technieken</h4>
+<ul>
+<li>📟 HTML</li>
+        <li>🎨 CSS</li>
+        <li>🕹️ JavaScript</li>
+ <li> 🚃 Express </li>
+  </ul>      
 
 ## Licentie
 
 This project is licensed under the terms of the [MIT license](./LICENSE).
+
