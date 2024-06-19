@@ -3,6 +3,8 @@
 */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Roboto+Mono&family=Syne:wght@400..800&display=swap');
 
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
+
 /* 
   <uniquifier>: Use a unique and descriptive class name
   <weight>: Use a value from 100 to 900 
@@ -15,6 +17,16 @@
   font-style: normal;
   font-variation-settings:
     "slnt" 0;
+}
+
+.nunito-sans-regular {
+  font-family: "Nunito Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings:
+    "wdth" 100,
+    "YTLC" 500;
 }
 
 /* 
@@ -61,9 +73,11 @@
   --extra-outline: #25abdb;
 
   /* font */
-  --font-primary: "Inter", var(--font-fallback);
+  --font-primary: "Nunito Sans", var(--font-fallback);
   --font-secondary: "Roboto Mono", var(--font-fallback);
   --font-tertiary: "Syne", var(--font-fallback);
+
+  --font-extra: "Nunito Sans", var(--font-fallback);
 
   --font-fallback: sans-serif, monospace;
 
@@ -125,6 +139,9 @@ form {
 form fieldset {
   border: none;
   padding: 0;
+  display: flex;
+  gap: 8px
+
 } 
 
 form fieldset legend {
@@ -134,6 +151,7 @@ form fieldset legend {
 }
 
 form input, form textarea {
+  width: 100%;
   font-family: var(--font-primary);
   font-size: 1rem;
   padding: 1rem 1.5rem;
@@ -145,6 +163,17 @@ input:focus, textarea {
   border-radius: 0;
   outline-color: var(--extra-outline);
   background-color: var(--secondary-color-ghost);
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-secondary);
+  font-size: 1rem;
+  padding: 8px 16px;
+  text-decoration: none;
+  border-radius: 0 !important;
+  text-transform: uppercase;
+  border: none;
 }
 
 :focus {
@@ -533,11 +562,12 @@ section.hero .content .buttons .btn.secondary {
   text-decoration: underline;
 }
 
-section.hero .content svg {
+/* Arrow (Temperary disabled) */
+/* section.hero .content svg {
   position: absolute;
   inset-inline-end: 200px;
   inset-block-end: 15px;
-}
+} */
 
 /* 
   About page 
@@ -841,6 +871,18 @@ section.block video source {
   object-fit: cover;
 }
 
+section.block .details-box {
+  padding: 16px;
+  border: 1px solid var(--primary-color);
+  margin: 0;
+}
+
+section.block .details-box ul {
+  padding-block-start: 0;
+  padding-block-end: 0;
+  
+}
+
 .vacancies ul {
   list-style-type: none;
   padding: 0;
@@ -850,24 +892,27 @@ section.block video source {
 }
 
 ul li.vacancy {
+  text-decoration: none;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
   gap: 16px;
   padding: 16px;
-  border-block-end: var(--line-px) var(--line-style) var(--primary-color)
+  border: var(--line-px) var(--line-style) var(--primary-color);
+  background-size: cover;
 }
 
-ul li.vacancy:last-child {
-  border-block-end: none;
+ul li.vacancy .content {
+  gap: 0;
 }
+
+/* ul li.vacancy:last-child {
+  border-block-end: none;
+} */
 
 ul li.vacancy .title {
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 16px;
 }
 
 ul li.vacancy .image {
@@ -878,20 +923,50 @@ ul li.vacancy .image {
 ul li.vacancy .image img {
   aspect-ratio: 1 / 1;
   object-fit: cover;
-  background-color: var(--secondary-color-ghost)
+  background-color: var(--secondary-color-ghost);
+  height: 100%;
 }
 
-ul li.vacancy .details {
+.details.vacancy {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-end;
-  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  /* gap end */
+  row-gap: 16px;
+  column-gap: 8px;
+  
 } 
 
-ul li.vacancy .detail p {
-  text-align: right;
+.details.vacancy .tag {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
+
+ul li.vacancy .subtitle a {
+  text-decoration: none;
+}
+
+ul li.vacancy .subtitle a:hover {
+  text-decoration: underline;
+}
+
+.details.vacancy .tag p {
+  width: fit-content;
+}
+
+.details.vacancy svg {
+  stroke: var(--primary-color);
+  height: 20px;
+  width: 20px;
+}
+
+.details.vacancy svg path {
+  stroke-width: 1.5;
+}
+
 
 section.members {
   margin: 0 var(--margin-sides);
@@ -973,7 +1048,8 @@ section.vacancies {
 
 section.vacancies ul {
   padding-block-start: 10px;
-  grid-template-columns: repeat(1, 1fr);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr) !important;
 } 
 
 

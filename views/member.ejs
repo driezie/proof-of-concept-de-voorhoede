@@ -7,6 +7,28 @@
         <section class="hero">
           <article class="content">
             <h1><%= member.title %></h1>
+            <p>
+              <% if (member.vacancies.length) { %>
+                Aantal vacatures: <%= member.vacancies.length %> · 
+            <% } %>
+            
+
+              <% if (member.colleagues) { %>
+                Collega's: <%= member.colleagues %>+ · 
+              <% } %>
+
+              <% if (member.email) { %>
+                Email: <a class="line-animation" href="mailto:<%= member.email %>"><%= member.email %></a> · 
+              <% } %>
+
+              <% if (member.phone) { %>
+                Telefoon: <a class="line-animation" href="tel:<%= member.phone %>"><%= member.phone %></a> · 
+              <% } %>
+
+              <% if (member.kvk) { %>
+                Kvk: <%= member.kvk %>
+              <% } %>
+            </p>
           </article>
         </section>
 

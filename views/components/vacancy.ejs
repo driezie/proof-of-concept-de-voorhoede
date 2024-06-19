@@ -1,33 +1,76 @@
 <li class="vacancy">
     <div class="image">
+        <% if (item.photo && item.photo.id) { %>
         <img src="https://fdnd-agency.directus.app/assets/<%= item.photo.id %>" alt="<%= item.title %>" width="<%= item.photo.width %>" height="<%= item.photo.height %>">
+        <% } else { %>
+            <img src="https://fdnd-agency.directus.app/assets/<%= item.agency_id.photo.id %>" alt="<%= item.title %>" width="<%= item.agency_id.photo.width %>" height="<%= item.agency_id.photo.height %>">
+        <% } %>
     </div>
 
-    <div class="title">
-        <h3><%= item.title %></h3>
+    <article class="content">
+        <div class="title">
+            <h3><%= item.title %></h3>
+        </div>
+
+        <div class="subtitle">
+            <b><a aria-label="Bekijk vacature" href="/member/<%= item.agency_id.id %>"><%= item.agency_id.title %></a> · </b>
+
+            <% 
+                let date = new Date(item.date_posted);
+                if (!isNaN(date.getTime())) { 
+                    let options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    let formattedDate = date.toLocaleDateString('nl-NL', options);
+            %>
+                    <%= formattedDate %>
+            <% } else { %>
+                    Invalid Date
+            <% } %>
+        </div>
+        
+        <div class="details vacancy">
+            <!-- Locatie -->
+            <% if (item.locatie !== null) { %>
+                <div class="tag">
+                    <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M12 22.5C14 18.5 20 15.9183 20 10.5C20 6.08172 16.4183 2.5 12 2.5C7.58172 2.5 4 6.08172 4 10.5C4 15.9183 10 18.5 12 22.5Z" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p><%= item.locatie %></p>
+                </div>
+            <% } %>
+
+            <!-- Employment -->
+            <% if (item.employment !== null) { %>
+                <div class="tag">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 6V12L16 14M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p><%= item.employment %></p>
+                </div>
+            <% } %>
+
+            <!-- Salary -->
+            <% if (item.salary !== null) { %>
+                <div class="tag">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M15.3333 8.27316C14.4487 7.48142 13.2806 7 12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17C13.2806 17 14.4487 16.5186 15.3333 15.7268M6 13.5H11M6 10.5H11M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <p><%= item.salary %></p>
+                </div>
+            <% } %>
+
+            <!-- Colleges -->
+            <% if (item.agency_id.colleagues !== null) { %>
+                
+                <div class="tag">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M16 3.46776C17.4817 4.20411 18.5 5.73314 18.5 7.5C18.5 9.26686 17.4817 10.7959 16 11.5322M18 16.7664C19.5115 17.4503 20.8725 18.565 22 20M2 20C3.94649 17.5226 6.58918 16 9.5 16C12.4108 16 15.0535 17.5226 17 20M14 7.5C14 9.98528 11.9853 12 9.5 12C7.01472 12 5 9.98528 5 7.5C5 5.01472 7.01472 3 9.5 3C11.9853 3 14 5.01472 14 7.5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+
+                    <p><%= item.agency_id.colleagues %>+ Collega's</p>
+                </div>
+            <% } %>
+        </div>
         <a aria-label="Bekijk vacature" class="btn primary" href="/vacancy/<%= item.id %>">Bekijk vacature</a>
-    </div>
-    
-    <div class="details">
-        <!-- Uren per week -->
-        <% if (item.hours == null) { %>
-            <p>- uur</p>
-        <% } else { %>
-            <p><%= item.hours %> uur</p>
-        <% } %>
-
-        <!-- Salaris -->
-        <% if (item.salary == null) { %>
-            <p>Salaris: -</p>
-        <% } else { %>
-            <p>Salaris: <%= item.salary %></p>
-        <% } %>
-
-        <!-- Baan -->
-        <% if (item.employment == null) { %>
-            <p>Baan: Onbekend</p>
-        <% } else { %>
-            <p>Baan: <%= item.employment %></p>
-        <% } %>
-    </div>
+    </article>
 </li>

@@ -30,7 +30,7 @@ const pages = ['vacancies', 'about', 'news', 'members', 'contact', 'cases'];
 pages.forEach(page => {
   app.get(`/${page}`, (req, res) => {
     if (page === 'vacancies') {
-      let endpoint = '/dda_agencies_vacancies?fields=*.*.*';
+      let endpoint = '/dda_agencies_vacancies?fields=*.*.*.*';
       if (req.query.s) {
         endpoint += `&filter[_or][0][title][_contains]=${req.query.s}&filter[_or][1][description][_contains]=${req.query.s}&filter[_or][2][employment][_contains]=${req.query.s}`;
         console.log(endpoint);
@@ -70,21 +70,21 @@ const detailPages = ['member', 'vacancy', 'member/next', 'vacancy/next'];
 detailPages.forEach(page => {
   if (page === 'member') {
     app.get(`/${page}/:id`, (req, res) => {
-      fetchFromApi('/dda_agencies/' + req.params.id + "?fields=*.*.*").then(data => {
+      fetchFromApi('/dda_agencies/' + req.params.id + "?fields=*.*.*.*").then(data => {
         // Render de pagina voor elk lid en de data van de API
         res.render(page, { member: data.data || [] });
       });
     });
   } else if (page === 'vacancy') {
     app.get(`/${page}/:id`, (req, res) => {
-      fetchFromApi('/dda_agencies_vacancies/' + req.params.id + "?fields=*.*.*").then(data => {
+      fetchFromApi('/dda_agencies_vacancies/' + req.params.id + "?fields=*.*.*.*").then(data => {
         // Render de pagina voor elke vacature en de data van de API
         res.render(page, { data: data.data || []});
       });
     });
   } else if (page === 'member/next') {
     app.get('/member/next/:id', (req, res) => {
-      fetchFromApi('/dda_agencies?fields=*.*.*').then(allMembersData => {
+      fetchFromApi('/dda_agencies?fields=*.*.*.*').then(allMembersData => {
         const members = allMembersData.data;
         // Bekijk de huidige positie van het lid in de lijst
         const currentMemberIndex = members.findIndex(member => member.id == req.params.id);
