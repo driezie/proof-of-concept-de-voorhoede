@@ -20,7 +20,7 @@
         <section class="members">
           <article class="content">
             <ul class="grid grid3x">
-              <% if (data) { %>
+              <% if (data && data.length > 0) { %>
               <% data.forEach(item=> { %>
               <li>
                 <div class="banner">
@@ -50,10 +50,11 @@
                 </div>
               </li>
               <% }) %>
-              <% } else %>
-              <li>
-                <p>Er zijn momenteel geen leden beschikbaar.</p>
-              </li>
+              <% } else { %>
+                <li>
+                  <p>Er zijn momenteel geen leden beschikbaar.</p>
+                </li>
+              <% } %>
             </ul>
           </article>
         </section>
