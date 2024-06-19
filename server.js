@@ -128,7 +128,7 @@ detailPages.forEach(page => {
 
 
 // Routes om pagina's weer te geven 404
-const pages404 = ['apply', 'sitemap', 'privacy', 'cases', '/theme/darkmode', '/theme/lightmode', '/news', '/events'];
+const pages404 = ['apply', 'sitemap', 'privacy', 'cases', '/theme/darkmode', '/theme/lightmode', 'news/article', 'events'];
 
 pages404.forEach(page => {
   app.get(`/${page}`, (req, res) => {
