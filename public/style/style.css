@@ -920,7 +920,7 @@ ul li.vacancy .image {
   
 }
 
-ul li.vacancy .image img {
+ul li.vacancy .image img, ul li.vacancy .image source {
   aspect-ratio: 1 / 1;
   object-fit: cover;
   background-color: var(--secondary-color-ghost);
@@ -988,6 +988,11 @@ section.members a, section.block a {
   overflow: hidden;
   background-color: var(--secondary-color-ghost);
   position: relative;
+}
+
+.banner picture {
+  overflow: visible;
+  height: 100%;
 }
 
 .banner .banner img, .banner .banner source {

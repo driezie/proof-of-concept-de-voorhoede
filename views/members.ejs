@@ -20,14 +20,19 @@
         <section class="members">
           <article class="content">
             <ul class="grid grid3x">
+              <% if (data) { %>
               <% data.forEach(item=> { %>
               <li>
                 <div class="banner">
                   <picture class="banner">
-                    <img src="https://fdnd-agency.directus.app/assets/<%= item.photo %>" alt="">
+                    <source srcset="https://fdnd-agency.directus.app/assets/<%= item.photo.id %>?format=avif" type="image/avif" width="<%= item.photo.width %>" height="<%= item.photo.height %>" alt="<%= item.title %>">
+                    <source srcset="https://fdnd-agency.directus.app/assets/<%= item.photo.id %>?format=webp" type="image/webp" width="<%= item.photo.width %>" height="<%= item.photo.height %>" alt="<%= item.title %>">
+                    <img src="https://fdnd-agency.directus.app/assets/<%= item.photo.id %>" loading="lazy" alt="<%= item.title %>">
                   </picture>
                   <picture class="logo">
-                    <img src="https://fdnd-agency.directus.app/assets/<%= item.logo %>" alt="">
+                    <source srcset="https://fdnd-agency.directus.app/assets/<%= item.logo.id %>?format=avif" type="image/avif" width="<%= item.logo.width %>" height="<%= item.logo.height %>" alt="<%= item.title %>">
+                    <source srcset="https://fdnd-agency.directus.app/assets/<%= item.logo.id %>?format=webp" type="image/webp" width="<%= item.logo.width %>" height="<%= item.logo.height %>" alt="<%= item.title %>">
+                    <img src="https://fdnd-agency.directus.app/assets/<%= item.logo.id %>" loading="lazy" alt="<%= item.title %> logo">
                   </picture>
                 </div>
                 <h3>
@@ -45,6 +50,10 @@
                 </div>
               </li>
               <% }) %>
+              <% } else %>
+              <li>
+                <p>Er zijn momenteel geen leden beschikbaar.</p>
+              </li>
             </ul>
           </article>
         </section>

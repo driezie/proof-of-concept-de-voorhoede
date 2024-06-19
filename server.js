@@ -30,32 +30,25 @@ const pages = ['vacancies', 'about', 'news', 'members', 'contact'];
 pages.forEach(page => {
   app.get(`/${page}`, (req, res) => {
     if (page === 'vacancies') {
-      let endpoint = '/dda_agencies_vacancies?fields=*.*.*.*';
+      let endpoint = '/dda_agencies_vacancies?fields=id,title,description,photo.id,photo.width,photo.height,date_posted,locatie,employment,salary,agency_id.title,agency_id.colleagues,agency_id.photo.id,agency_id.photo.width,agency_id.photo.height';
       if (req.query.s) {
         endpoint += `&filter[_or][0][title][_contains]=${req.query.s}&filter[_or][1][description][_contains]=${req.query.s}&filter[_or][2][employment][_contains]=${req.query.s}`;
-        console.log(endpoint);
       }
       fetchFromApi(endpoint).then(data => {
+        console.log(data.data);
         // Render the template for the members page with the data from the API
         res.render(page, { data: data.data || []});
-      }).catch(error => {
-        console.error('Error fetching members:', error);
-        res.status(500).send('Internal Server Error');
-      });
+      })
 
     } else if (page === 'members') {
-      let endpoint = '/dda_agencies';
+      let endpoint = '/dda_agencies?fields=id,title,photo.id,photo.width,photo.height,logo.id,logo.width,logo.height,summary,vacancies.id,vacancies.title,vacancies.description,vacancies.employment';
       if (req.query.s) {
-        endpoint += `?filter[_or][0][title][_contains]=${req.query.s}&filter[_or][1][summary][_contains]=${req.query.s}&filter[_or][2][description][_contains]=${req.query.s}&filter[_or][3][vacancies][title][_contains]=${req.query.s}&filter[_or][4][vacancies][description][_contains]=${req.query.s}&filter[_or][5][vacancies][employment][_contains]=${req.query.s}`;
-        console.log(endpoint);
+        endpoint += `&filter[_or][0][title][_contains]=${req.query.s}&filter[_or][1][summary][_contains]=${req.query.s}&filter[_or][2][description][_contains]=${req.query.s}&filter[_or][3][vacancies][title][_contains]=${req.query.s}&filter[_or][4][vacancies][description][_contains]=${req.query.s}&filter[_or][5][vacancies][employment][_contains]=${req.query.s}`;
       }
       fetchFromApi(endpoint).then(data => {
         // Render the template for the members page with the data from the API
         res.render(page, { data: data.data || []});
-      }).catch(error => {
-        console.error('Error fetching members:', error);
-        res.status(500).send('Internal Server Error');
-      });
+      })
     } else {
       // Render the template for other pages
       res.render(page);
@@ -70,21 +63,23 @@ const detailPages = ['member', 'vacancy', 'member/next', 'vacancy/next'];
 detailPages.forEach(page => {
   if (page === 'member') {
     app.get(`/${page}/:id`, (req, res) => {
-      fetchFromApi('/dda_agencies/' + req.params.id + "?fields=*.*.*.*").then(data => {
+      fetchFromApi('/dda_agencies/' + req.params.id + '?fields=title,description,colleagues,email,phone,kvk,photo.id,photo.width.photo.height,vacancies.*.*').then(data => {
         // Render de pagina voor elk lid en de data van de API
+        console.log(data.data);
         res.render(page, { member: data.data || [] });
       });
     });
   } else if (page === 'vacancy') {
     app.get(`/${page}/:id`, (req, res) => {
-      fetchFromApi('/dda_agencies_vacancies/' + req.params.id + "?fields=*.*.*.*").then(data => {
+      fetchFromApi('/dda_agencies_vacancies/' + req.params.id + "?fields=title,description,locatie,salary,employment,date_posted,hours,url,photo.id,photo.width.photo.height,agency_id.id,agency_id.title,agency_id.summary,agency_id.colleagues,agency_id.vacancies,id").then(data => {
+        console.log(data.data);
         // Render de pagina voor elke vacature en de data van de API
         res.render(page, { data: data.data || []});
       });
     });
   } else if (page === 'member/next') {
     app.get('/member/next/:id', (req, res) => {
-      fetchFromApi('/dda_agencies?fields=*.*.*.*').then(allMembersData => {
+      fetchFromApi('/dda_agencies').then(allMembersData => {
         const members = allMembersData.data;
         // Bekijk de huidige positie van het lid in de lijst
         const currentMemberIndex = members.findIndex(member => member.id == req.params.id);
@@ -107,7 +102,7 @@ detailPages.forEach(page => {
   
   } else if (page === 'vacancy/next') {
     app.get('/vacancy/next/:id/:agency_id', (req, res) => {
-      fetchFromApi('/dda_agencies/' + req.params.agency_id + '?fields=*.*.*').then(agencyData => {
+      fetchFromApi('/dda_agencies/' + req.params.agency_id + '?fields=*.*.*.*').then(agencyData => {
         const vacancies = agencyData.data.vacancies;
 
         // Bekijk de huidige positie van de vacature in de lijst

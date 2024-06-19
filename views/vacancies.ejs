@@ -23,9 +23,15 @@
           <article class="content">
               <div class="vacancies">
                 <ul>
+                  <% if (data) { %>
                   <% data.forEach(item => { %>
                     <%- include('components/vacancy', { item: item }) %>
-                  <% }) %>                    
+                  <% }) %>   
+                  <% } else { %>
+                    <li>
+                      <p>Er zijn momenteel geen vacatures beschikbaar.</p>
+                    </li>
+                  <% } %>                 
                 </ul>
               </div>
               

@@ -1,11 +1,11 @@
 <li class="vacancy">
-    <div class="image">
+    <picture class="image">
         <% if (item.photo && item.photo.id) { %>
-        <img src="https://fdnd-agency.directus.app/assets/<%= item.photo.id %>" alt="<%= item.title %>" width="<%= item.photo.width %>" height="<%= item.photo.height %>">
-        <% } else { %>
-            <img src="https://fdnd-agency.directus.app/assets/<%= item.agency_id.photo.id %>" alt="<%= item.title %>" width="<%= item.agency_id.photo.width %>" height="<%= item.agency_id.photo.height %>">
+            <source srcset="https://fdnd-agency.directus.app/assets/<%= item.photo.id %>?format=avif" type="image/avif" width="<%= item.photo.width %>" height="<%= item.photo.height %>" alt="<%= item.title %>">
+            <source srcset="https://fdnd-agency.directus.app/assets/<%= item.photo.id %>?format=webp" type="image/webp" width="<%= item.photo.width %>" height="<%= item.photo.height %>" alt="<%= item.title %>">
+            <img src="https://fdnd-agency.directus.app/assets/<%= item.photo.id %>" loading="lazy" alt="<%= item.title %>">
         <% } %>
-    </div>
+    </picture>
 
     <article class="content">
         <div class="title">
