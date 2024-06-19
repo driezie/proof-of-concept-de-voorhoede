@@ -63,7 +63,7 @@ const detailPages = ['member', 'vacancy', 'member/next', 'vacancy/next'];
 detailPages.forEach(page => {
   if (page === 'member') {
     app.get(`/${page}/:id`, (req, res) => {
-      fetchFromApi('/dda_agencies/' + req.params.id + '?fields=title,description,colleagues,email,phone,kvk,photo.id,photo.width.photo.height,vacancies.*.*').then(data => {
+      fetchFromApi('/dda_agencies/' + req.params.id + '?fields=id,title,description,colleagues,email,phone,kvk,photo.id,photo.width.photo.height,vacancies.*.*').then(data => {
         // Render de pagina voor elk lid en de data van de API
         console.log(data.data);
         res.render(page, { member: data.data || [] });
