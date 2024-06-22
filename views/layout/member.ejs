@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="nl">
-  <%- include('components/head', pageTitle = "Onze leden") %>
+  <%- include('../components/head', pageTitle = "Onze leden") %>
     <article class="container">
-        <%- include('components/header') %>
+        <%- include('../components/header') %>
 
         <section class="hero">
           <article class="content">
@@ -63,7 +63,7 @@
               <div class="vacancies">
                 <ul>
                   <% member.vacancies.forEach(item => { %>
-                    <%- include('components/vacancy', { item: item }) %>
+                    <%- include('../components/vacancy', { item: item }) %>
                   <% }) %>                    
                 </ul>
               </div>
@@ -96,7 +96,7 @@
               link.classList.add("line-animation");
           });
         </script>
-        <%- include('components/footer') %>
+        <%- include('../components/footer') %>
     </div>
   </body>
 </html>

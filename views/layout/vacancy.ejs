@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="nl">
-  <%- include('components/head', pageTitle = data.title + " van " + data.agency_id.title) %>
+  <%- include('../components/head', pageTitle = data.title + " van " + data.agency_id.title) %>
   <% console.log(data) %>
     <article class="container">
-        <%- include('components/header') %>
+        <%- include('../components/header') %>
 
         <section class="hero">
           <article class="content vacancy">
@@ -139,7 +139,7 @@
               link.classList.add("line-animation");
           });
         </script>
-        <%- include('components/footer') %>
+        <%- include('../components/footer') %>
     </div>
   </body>
 </html>

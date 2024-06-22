@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="nl">
-  <%- include('components/head', pageTitle = "Vacatures") %>
+  <%- include('../components/head', pageTitle = "Vacatures") %>
     <article class="container">
-        <%- include('components/header') %>
+        <%- include('../components/header') %>
         
         <section class="hero">
           <article class="content">
@@ -25,7 +25,7 @@
                 <ul>
                   <% if (data) { %>
                   <% data.forEach(item => { %>
-                    <%- include('components/vacancy', { item: item }) %>
+                    <%- include('../components/vacancy', { item: item }) %>
                   <% }) %>   
                   <% } else { %>
                     <li>
@@ -38,7 +38,7 @@
           </article>
         </section>
 
-        <%- include('components/footer') %>
+        <%- include('../components/footer') %>
     </div>
   </body>
 </html>
