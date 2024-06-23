@@ -1,3 +1,6 @@
+> [!WARNING]\
+> Dit project is geupdated. Als je de laatste update wilt van vrijdag 21 Juni bekijk commit [90c79ffda3c737a16fbc1edaa23883b21f8e4d4d](https://github.com/driezie/proof-of-concept-de-voorhoede/tree/90c79ffda3c737a16fbc1edaa23883b21f8e4d4d).
+
 <h1> Dutch Digital Agency Website Redesign</h1>
 
 [![Stars](https://img.shields.io/github/stars/driezie/proof-of-concept-de-voorhoede?style=flat-square)](https://github.com/driezie/proof-of-concept-de-voorhoede/stargazers)
@@ -23,10 +26,11 @@ Voor de opdrachtgever <a href="https://www.voorhoede.nl/">De Voorhoede</a> heb i
 
 <h3>📚 Inhoudsopgave</h3>
 <ul>
-<li><a href="#Opdracht"> 👨🏼‍💼 Opdracht</a></li> 
-<li><a href="#Gebruik"> 👩🏽‍💻 Gebruik </a></li>  
-<li><a href="#Installatie"> 🛠Installatie </a></li>
-<li><a href="#Kenmerken"> 📱 Kenmerken en uitleg Node, Express en EJS</a></li> 
+   <li><a href="#Opdracht"> 👨🏼‍💼 Opdracht</a></li> 
+   <li><a href="#Gebruik"> 👩🏽‍💻 Gebruik </a></li>  
+   <li><a href="#Installatie"> 🛠Installatie </a></li>
+   <li><a href="#Kenmerken"> 📱 Kenmerken en uitleg Node, Express en EJS</a></li> 
+   <li><a href="#statistieken"> Statistieken </a></li>
 </ul>
    
 <h3 id="#Gebruik"> 👩🏽‍💻 Gebruik van website</h3>
@@ -73,6 +77,12 @@ Dit project is gemaakt met Node, Express, EJS.
         <li>🕹️ JavaScript</li>
  <li> 🚃 Express </li>
   </ul>      
+
+<h3 id="#statistieken">>Statistieken</h4>
+
+
+[![Top Langs](https://github-readme-stats.vercel.app/api/top-langs/?username=anuraghazra)](https://github.com/driezie/proof-of-concept-de-voorhoede/?bg_color=151515)
+
 
 ## Licentie
 
