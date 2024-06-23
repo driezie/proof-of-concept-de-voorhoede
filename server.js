@@ -59,7 +59,7 @@ app.get("/", (req, res) => {
 pages.forEach((page) => {
   app.get(`/${page}`, (req, res) => {
     if (page === 'vacancies') {
-      let endpoint = '/dda_agencies_vacancies?fields=id,title,description,photo.id,photo.width,photo.height,date_posted,locatie,employment,salary,agency_id.title,agency_id.colleagues,agency_id.photo.id,agency_id.photo.width,agency_id.photo.height'
+      let endpoint = '/dda_agencies_vacancies?fields=id,title,description,photo.id,photo.width,photo.height,date_posted,locatie,employment,salary,agency_id.id,agency_id.title,agency_id.colleagues,agency_id.photo.id,agency_id.photo.width,agency_id.photo.height'
       if (req.query.s) {
         endpoint += `&filter[_or][0][title][_contains]=${req.query.s}&filter[_or][1][description][_contains]=${req.query.s}&filter[_or][2][employment][_contains]=${req.query.s}`
       }
