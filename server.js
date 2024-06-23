@@ -59,52 +59,52 @@ app.get("/", (req, res) => {
 pages.forEach((page) => {
   app.get(`/${page}`, (req, res) => {
     if (page === 'vacancies') {
-      let endpoint = '/dda_agencies_vacancies?fields=id,title,description,photo.id,photo.width,photo.height,date_posted,locatie,employment,salary,agency_id.title,agency_id.colleagues,agency_id.photo.id,agency_id.photo.width,agency_id.photo.height';
+      let endpoint = '/dda_agencies_vacancies?fields=id,title,description,photo.id,photo.width,photo.height,date_posted,locatie,employment,salary,agency_id.title,agency_id.colleagues,agency_id.photo.id,agency_id.photo.width,agency_id.photo.height'
       if (req.query.s) {
-        endpoint += `&filter[_or][0][title][_contains]=${req.query.s}&filter[_or][1][description][_contains]=${req.query.s}&filter[_or][2][employment][_contains]=${req.query.s}`;
+        endpoint += `&filter[_or][0][title][_contains]=${req.query.s}&filter[_or][1][description][_contains]=${req.query.s}&filter[_or][2][employment][_contains]=${req.query.s}`
       }
-      renderPage(apiUrl, renderFolder, page, req, res, endpoint);
+      renderPage(apiUrl, renderFolder, page, req, res, endpoint)
     } else if (page === 'members') {
-      let endpoint = '/dda_agencies?fields=id,title,photo.id,photo.width,photo.height,logo.id,logo.width,logo.height,summary,vacancies.id,vacancies.title,vacancies.description,vacancies.employment';
+      let endpoint = '/dda_agencies?fields=id,title,photo.id,photo.width,photo.height,logo.id,logo.width,logo.height,summary,vacancies.id,vacancies.title,vacancies.description,vacancies.employment'
       if (req.query.s) {
-        endpoint += `&filter[_or][0][title][_contains]=${req.query.s}&filter[_or][1][summary][_contains]=${req.query.s}&filter[_or][2][description][_contains]=${req.query.s}&filter[_or][3][vacancies][title][_contains]=${req.query.s}&filter[_or][4][vacancies][description][_contains]=${req.query.s}&filter[_or][5][vacancies][employment][_contains]=${req.query.s}`;
+        endpoint += `&filter[_or][0][title][_contains]=${req.query.s}&filter[_or][1][summary][_contains]=${req.query.s}&filter[_or][2][description][_contains]=${req.query.s}&filter[_or][3][vacancies][title][_contains]=${req.query.s}&filter[_or][4][vacancies][description][_contains]=${req.query.s}&filter[_or][5][vacancies][employment][_contains]=${req.query.s}`
       }
-      renderPage(apiUrl, renderFolder, page, req, res, endpoint);
+      renderPage(apiUrl, renderFolder, page, req, res, endpoint)
     } else {
-      renderPage(apiUrl, renderFolder, page, req, res);
+      renderPage(apiUrl, renderFolder, page, req, res)
     }
-  });
-});
+  })
+})
 
 detailPages.forEach((page) => {
   if (page === 'member') {
     app.get(`/${page}/:id`, (req, res) => {
-      const endpoint = `/dda_agencies/${req.params.id}?fields=id,title,description,colleagues,email,phone,kvk,photo.id,photo.width,photo.height,vacancies.*.*`;
-      renderDetailPage(apiUrl, renderFolder, page, req, res, endpoint);
-    });
+      const endpoint = `/dda_agencies/${req.params.id}?fields=id,title,description,colleagues,email,phone,kvk,photo.id,photo.width,photo.height,vacancies.*.*`
+      renderDetailPage(apiUrl, renderFolder, page, req, res, endpoint)
+    })
   } else if (page === 'vacancy') {
     app.get(`/${page}/:id`, (req, res) => {
-      const endpoint = `/dda_agencies_vacancies/${req.params.id}?fields=title,description,locatie,salary,employment,date_posted,hours,url,photo.id,photo.width,photo.height,agency_id.id,agency_id.title,agency_id.summary,agency_id.colleagues,agency_id.vacancies,id`;
-      renderDetailPage(apiUrl, renderFolder, page, req, res, endpoint);
-    });
+      const endpoint = `/dda_agencies_vacancies/${req.params.id}?fields=title,description,locatie,salary,employment,date_posted,hours,url,photo.id,photo.width,photo.height,agency_id.id,agency_id.title,agency_id.summary,agency_id.colleagues,agency_id.vacancies,id`
+      renderDetailPage(apiUrl, renderFolder, page, req, res, endpoint)
+    })
   } else if (page === 'member/next') {
     app.get('/member/next/:id', (req, res) => {
       fetchFromApi(apiUrl, '/dda_agencies')
         .then((allMembersData) => {
-          const nextMemberId = getNextItemId(allMembersData.data, req.params.id);
-          res.redirect(`/member/${nextMemberId}`);
+          const nextMemberId = getNextItemId(allMembersData.data, req.params.id)
+          res.redirect(`/member/${nextMemberId}`)
         })
-    });
+    })
   } else if (page === 'vacancy/next') {
     app.get('/vacancy/next/:id/:agency_id', (req, res) => {
       fetchFromApi(apiUrl, `/dda_agencies/${req.params.agency_id}?fields=*.*.*.*`)
         .then((agencyData) => {
-          const nextVacancyId = getNextItemId(agencyData.data.vacancies, req.params.id);
-          res.redirect(`/vacancy/${nextVacancyId}`);
+          const nextVacancyId = getNextItemId(agencyData.data.vacancies, req.params.id)
+          res.redirect(`/vacancy/${nextVacancyId}`)
         })
-    });
+    })
   }
-});
+})
 
 pages404.forEach((page) => {
   app.get(`/${page}`, (req, res) => {
