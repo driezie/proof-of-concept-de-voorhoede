@@ -1,6 +1,9 @@
 <h1> Dutch Digital Agency Website Redesign</h1>
 
 [![Stars](https://img.shields.io/github/stars/driezie/proof-of-concept-de-voorhoede?style=flat-square)](https://github.com/driezie/proof-of-concept-de-voorhoede/stargazers)
+
+Geef een ster aan deze repo om de count omhoog te zien gaan!
+
 [![Fork](https://img.shields.io/github/forks/driezie/proof-of-concept-de-voorhoede?style=flat-square)](https://github.com/driezie/proof-of-concept-de-voorhoede/fork)
 [![Issues](https://img.shields.io/github/issues/driezie/proof-of-concept-de-voorhoede?style=flat-square)](https://github.com/driezie/proof-of-concept-de-voorhoede/issues/new)
 
