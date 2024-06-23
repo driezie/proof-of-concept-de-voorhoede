@@ -3,7 +3,7 @@
   <%- include('../components/head', pageTitle = "Vacatures") %>
     <article class="container">
         <%- include('../components/header') %>
-        
+
         <section class="hero">
           <article class="content">
             <h1>Vacatures</h1>
@@ -23,18 +23,17 @@
           <article class="content">
               <div class="vacancies">
                 <ul>
-                  <% if (data) { %>
-                  <% data.forEach(item => { %>
-                    <%- include('../components/vacancy', { item: item }) %>
-                  <% }) %>   
+                  <% if (data && data.length > 0) { %>
+                    <% data.forEach(item=> { %>
+                      <%- include('../components/cards/vacancy', { item: item }) %>
+                    <% }) %>
                   <% } else { %>
-                    <li>
-                      <p>Er zijn momenteel geen vacatures beschikbaar.</p>
-                    </li>
-                  <% } %>                 
+                      <li>
+                          <p>Er zijn momenteel geen vacatures gevonden.</p>
+                      </li>
+                  <% } %>
                 </ul>
               </div>
-              
           </article>
         </section>
 
@@ -42,4 +41,3 @@
     </div>
   </body>
 </html>
-

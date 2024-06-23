@@ -1,0 +1,27 @@
+<li>
+  <div class="banner">
+    <picture class="banner">
+      <source srcset="https://fdnd-agency.directus.app/assets/<%= item.photo.id %>?format=avif" type="image/avif" width="<%= item.photo.width %>" height="<%= item.photo.height %>" alt="<%= item.title %>">
+      <source srcset="https://fdnd-agency.directus.app/assets/<%= item.photo.id %>?format=webp" type="image/webp" width="<%= item.photo.width %>" height="<%= item.photo.height %>" alt="<%= item.title %>">
+      <img src="https://fdnd-agency.directus.app/assets/<%= item.photo.id %>" loading="lazy" alt="<%= item.title %>">
+    </picture>
+    <picture class="logo">
+      <source srcset="https://fdnd-agency.directus.app/assets/<%= item.logo.id %>?format=avif" type="image/avif" width="<%= item.logo.width %>" height="<%= item.logo.height %>" alt="<%= item.title %>">
+      <source srcset="https://fdnd-agency.directus.app/assets/<%= item.logo.id %>?format=webp" type="image/webp" width="<%= item.logo.width %>" height="<%= item.logo.height %>" alt="<%= item.title %>">
+      <img src="https://fdnd-agency.directus.app/assets/<%= item.logo.id %>" loading="lazy" alt="<%= item.title %> logo">
+    </picture>
+  </div>
+  <h3>
+    <%= item.title %>
+  </h3>
+  <div class="description">
+    <%- item.summary || "<p>Er is momenteel geen beschrijving voor dit bedrijf.</p>" %>
+  </div>
+  <p>
+    Open vacatures: <%= item.vacancies.length %>
+  </p>
+  <div class="buttons">
+    <a aria-label="Bekijk alle vacatures" class="btn secondary line-animation" href="/member/<%= item.id %>#vacancies">Bekijk open vacatures</a>
+    <a aria-label="Bekijk profiel" class="btn primary" href="/member/<%= item.id %>">Bekijk profiel</a>
+  </div>
+</li>

@@ -1,11 +1,11 @@
-.line-animation {
+.line-animation,.block .content .description a {
     display: inline-block;
     position: relative;
     text-decoration: none !important;
     width: fit-content;
   }
-  
-  .line-animation::after {
+
+  .line-animation::after, .block .content .description a::after {
     content: '';
     position: absolute;
     width: calc(100%); /* 16px is the padding on the button */
@@ -17,8 +17,8 @@
     transform-origin: left;
     transition: transform 0.4s ease-out;
   }
-  
-  .line-animation:hover::after {
+
+  .line-animation:hover::after, .block .content .description a:hover::after {
     animation: example 0.4s forwards;
   }
 

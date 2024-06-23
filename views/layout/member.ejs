@@ -6,27 +6,27 @@
 
         <section class="hero">
           <article class="content">
-            <h1><%= member.title %></h1>
+            <h1><%= data.title %></h1>
             <p>
-              <% if (member.vacancies && member.vacancies.length) { %>
-                Aantal vacatures: <%= member.vacancies.length %> · 
+              <% if (data.vacancies && data.vacancies.length) { %>
+                Aantal vacatures: <%= data.vacancies.length %> ·
             <% } %>
-            
 
-              <% if (member.colleagues) { %>
-                Collega's: <%= member.colleagues %>+ · 
+
+              <% if (data.colleagues) { %>
+                Collega's: <%= data.colleagues %>+ ·
               <% } %>
 
-              <% if (member.email) { %>
-                Email: <a class="line-animation" href="mailto:<%= member.email %>"><%= member.email %></a> · 
+              <% if (data.email) { %>
+                Email: <a class="line-animation" href="mailto:<%= data.email %>"><%= data.email %></a> ·
               <% } %>
 
-              <% if (member.phone) { %>
-                Telefoon: <a class="line-animation" href="tel:<%= member.phone %>"><%= member.phone %></a> · 
+              <% if (data.phone) { %>
+                Telefoon: <a class="line-animation" href="tel:<%= data.phone %>"><%= data.phone %></a> ·
               <% } %>
 
-              <% if (member.kvk) { %>
-                Kvk: <%= member.kvk %>
+              <% if (data.kvk) { %>
+                Kvk: <%= data.kvk %>
               <% } %>
             </p>
           </article>
@@ -37,37 +37,37 @@
             <ul class="grid grid3x">
               <li>
                 <div class="description">
-                  <%- member.description || "<p>Er is momenteel geen beschrijving voor dit bedrijf.</p>" %>
+                  <%- data.description || "<p>Er is momenteel geen beschrijving voor dit bedrijf.</p>" %>
                 </div>
               </li>
             </ul>
           </article>
-          <% if (member.photo && member.photo.id) { %>
+          <% if (data.photo && data.photo.id) { %>
           <div class="block-banner">
             <picture>
-              <img src="https://fdnd-agency.directus.app/assets/<%= member.photo.id %>" alt="<%= member.title %>" width="<%= member.photo.width %>" height="<%= member.photo.height %>">
+              <img src="https://fdnd-agency.directus.app/assets/<%= data.photo.id %>" alt="<%= data.title %>" width="<%= data.photo.width %>" height="<%= data.photo.height %>">
             </picture>
           </div>
           <% } %>
         </section>
-        
-        <% if (member.vacancies && member.vacancies.length) { %>
+
+        <% if (data.vacancies && data.vacancies.length) { %>
         <section class="hero" id="vacancies">
           <article class="content">
-            <h1><%= member.vacancies.length %> open vacatures</h1>
+            <h1><%= data.vacancies.length %> open vacatures</h1>
           </article>
         </section>
-        
+
         <section class="block vacancies">
           <article class="content">
               <div class="vacancies">
                 <ul>
-                  <% member.vacancies.forEach(item => { %>
-                    <%- include('../components/vacancy', { item: item }) %>
-                  <% }) %>                    
+                  <% data.vacancies.forEach(item => { %>
+                    <%- include('../components/cards/vacancy', { item: item }) %>
+                  <% }) %>
                 </ul>
               </div>
-              
+
           </article>
         </section>
         <% } %>
@@ -81,8 +81,8 @@
                Ga terug naar overzicht
             </a>
 
-            <a aria-label="Terug naar overzicht" style="padding-inline-start: 0; padding-inline-end: 0;" class="btn secondary line-animation" href="/member/next/<%= member.id %>">
-              
+            <a aria-label="Terug naar overzicht" style="padding-inline-start: 0; padding-inline-end: 0;" class="btn secondary line-animation" href="/member/next/<%= data.id %>">
+
                Naar volgende lid
                <svg style="rotate: 180deg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -91,13 +91,7 @@
           </article>
         </section>
 
-        <script>
-          document.querySelectorAll(".block .content .description a").forEach(function(link) {
-              link.classList.add("line-animation");
-          });
-        </script>
         <%- include('../components/footer') %>
     </div>
   </body>
 </html>
-

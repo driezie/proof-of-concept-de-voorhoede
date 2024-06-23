@@ -5,9 +5,9 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
-/* 
+/*
   <uniquifier>: Use a unique and descriptive class name
-  <weight>: Use a value from 100 to 900 
+  <weight>: Use a value from 100 to 900
 */
 
 .inter-regular {
@@ -29,7 +29,7 @@
     "YTLC" 500;
 }
 
-/* 
+/*
   <uniquifier>: Use a unique and descriptive class name
   <weight>: Use a value from 400 to 800
 */
@@ -41,7 +41,7 @@
   font-style: normal;
 }
 
-/* 
+/*
   <uniquifier>: Use a unique and descriptive class name
 */
 
@@ -52,7 +52,7 @@
   font-style: normal;
 }
 
-/* 
+/*
   Variables
 */
 
@@ -142,7 +142,7 @@ form fieldset {
   display: flex;
   gap: 8px
 
-} 
+}
 
 form fieldset legend {
   font-family: var(--font-secondary);
@@ -249,7 +249,7 @@ body > .container {
   position: relative;
 }
 
-/* 
+/*
   Navigation
 */
 
@@ -385,8 +385,8 @@ body :has(.navigation ul.menu.show) nav {
 }
 
 .navigation nav > ul.menu a:hover,
-.navigation nav > ul.menu button:hover, 
-.navigation nav > ul.circle-buttons a:hover, 
+.navigation nav > ul.menu button:hover,
+.navigation nav > ul.circle-buttons a:hover,
 .navigation nav > ul.menu a:focus,
 .navigation nav > ul.menu button:focus{
   --alpha: 10%;
@@ -412,7 +412,7 @@ body :has(.navigation ul.menu.show) nav {
   border-radius: var(--full-button-border-radius);
   color: var(--primary-color);
   padding: 0;
-  border: var(--line-px) var(--line-style) var(--primary-color);  
+  border: var(--line-px) var(--line-style) var(--primary-color);
 }
 
 .navigation nav > ul.circle-buttons .active a {
@@ -440,7 +440,7 @@ body :has(.navigation ul.menu.show) nav {
   background: var(--primary-color-ghost);
 }
 
-.navigation nav > ul.cta a:focus, 
+.navigation nav > ul.cta a:focus,
 .navigation nav > ul.circle-buttons a:focus{
   outline-color: var(--extra-outline);
   background: var(--primary-color-ghost)
@@ -569,8 +569,8 @@ section.hero .content .buttons .btn.secondary {
   inset-block-end: 15px;
 } */
 
-/* 
-  About page 
+/*
+  About page
 */
 
 section.info {
@@ -880,7 +880,7 @@ section.block .details-box {
 section.block .details-box ul {
   padding-block-start: 0;
   padding-block-end: 0;
-  
+
 }
 
 .vacancies ul {
@@ -917,7 +917,7 @@ ul li.vacancy .title {
 
 ul li.vacancy .image {
   max-width: 10em;
-  
+
 }
 
 ul li.vacancy .image img, ul li.vacancy .image source {
@@ -935,8 +935,8 @@ ul li.vacancy .image img, ul li.vacancy .image source {
   /* gap end */
   row-gap: 16px;
   column-gap: 8px;
-  
-} 
+
+}
 
 .details.vacancy .tag {
   width: fit-content;
@@ -1049,13 +1049,14 @@ section.vacancies {
   margin: 0 var(--margin-sides);
   padding: 40px 0;
   border-bottom: none;
+  border-block-end: var(--line-px) var(--line-style) var(--primary-color);
 }
 
 section.vacancies ul {
   padding-block-start: 10px;
   display: grid;
   grid-template-columns: repeat(2, 1fr) !important;
-} 
+}
 
 
 section.hero article.vacancy {
@@ -1082,7 +1083,7 @@ section.hero article.vacancy {
   .navigation nav > ul.cta {
     display: flex;
   }
-  
+
   .navigation nav > ul.mobile-menu{
     display: none;
   }
@@ -1107,11 +1108,11 @@ section.hero article.vacancy {
   .grid.team, .grid.about, .grid.news {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .grid.with-lines li {
     position: relative; /* Ensure positioning context for pseudo-elements */
   }
-  
+
   /* General line settings */
   .grid.with-lines li::after {
     background: var(--primary-color);
@@ -1123,17 +1124,17 @@ section.hero article.vacancy {
     top: 0px;
     width: var(--line-px);
   }
-  
+
   /* Padding adjustment for odd elements */
   .grid.with-lines li:nth-child(odd) {
     padding-inline-end: 25px;
   }
-  
+
   /* Hide lines after even elements */
   .grid.with-lines li:nth-child(even)::after {
     display: none;
   }
-  
+
   /* Horizontal lines for odd elements, except the last one */
   .grid.with-lines li:not(:last-child):nth-child(odd)::before {
     background: var(--primary-color);
@@ -1144,7 +1145,7 @@ section.hero article.vacancy {
     width: calc(100%);
     z-index: 99;
   }
-  
+
   /* Horizontal lines for even elements, except the last one */
   .grid.with-lines li:not(:last-child):nth-child(even)::before {
     background: var(--primary-color);
@@ -1156,18 +1157,18 @@ section.hero article.vacancy {
     inset-inline-start: -50px;
     z-index: 99;
   }
-  
+
   /* Special handling for the second last odd item */
   .grid.with-lines li:nth-last-child(2):nth-child(odd)::before {
     width: calc(100% - 50px);
   }
-  
+
   /* Special handling for the last two elements if they are an odd-even pair */
   .grid.with-lines li:nth-last-child(2):nth-child(odd)::before,
   .grid.with-lines li:nth-last-child(1):nth-child(even)::before {
     display: none;
   }
-  
+
   /* Overriding the last-child pseudo-elements */
   .grid.with-lines li:nth-last-child(1)::before {
     display: none;
@@ -1184,7 +1185,7 @@ section.hero article.vacancy {
 
   section.members ul {
     grid-template-columns: repeat(3, 1fr);
-  } 
+  }
 }
 
 @media screen and (min-width: 1250px) {
@@ -1192,7 +1193,7 @@ section.hero article.vacancy {
   .navigation nav > ul.circle-buttons {
     display: flex;
   }
-  
+
   .navigation nav span.devider {
     display: flex;
   }
@@ -1215,6 +1216,3 @@ section.hero article.vacancy {
     grid-template-columns: repeat(4, 1fr);
   }
 }
-
-
-

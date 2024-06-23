@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="nl">
-  <%- include('../components/head', pageTitle = data.title + " van " + data.agency_id.title) %>
+  <%
+    const pageTitle = data.title + " van " + (data.agency_id ? data.agency_id.title : "Unknown Agency")
+  %>
+  <%- include('../components/head', { pageTitle: pageTitle }) %>
   <% console.log(data) %>
     <article class="container">
         <%- include('../components/header') %>
@@ -10,7 +13,7 @@
             <h1><%= data.title %></h1>
             <div class="details vacancy">
               <!-- Locatie -->
-              <% if (data.locatie !== null) { %>
+              <% if (data.locatie) { %>
                   <div class="tag">
                       <svg width="24" height="25" viewBox="0 0 24 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M12 13C13.6569 13 15 11.6569 15 10C15 8.34315 13.6569 7 12 7C10.3431 7 9 8.34315 9 10C9 11.6569 10.3431 13 12 13Z" stroke="#1E1E1E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -19,9 +22,9 @@
                       <p><%= data.locatie %></p>
                   </div>
               <% } %>
-  
+
               <!-- Employment -->
-              <% if (data.employment !== null) { %>
+              <% if (data.employment) { %>
                   <div class="tag">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M12 6V12L16 14M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -29,9 +32,9 @@
                       <p><%= data.employment %></p>
                   </div>
               <% } %>
-  
+
               <!-- Salary -->
-              <% if (data.salary !== null) { %>
+              <% if (data.salary) { %>
                   <div class="tag">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M15.3333 8.27316C14.4487 7.48142 13.2806 7 12 7C9.23858 7 7 9.23858 7 12C7 14.7614 9.23858 17 12 17C13.2806 17 14.4487 16.5186 15.3333 15.7268M6 13.5H11M6 10.5H11M22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -39,15 +42,14 @@
                       <p><%= data.salary %></p>
                   </div>
               <% } %>
-  
+
               <!-- Colleges -->
-              <% if (data.agency_id.colleagues !== null) { %>
-                  
+              <% if (data.agency_id && data.agency_id.colleagues) { %>
                   <div class="tag">
                       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                           <path d="M16 3.46776C17.4817 4.20411 18.5 5.73314 18.5 7.5C18.5 9.26686 17.4817 10.7959 16 11.5322M18 16.7664C19.5115 17.4503 20.8725 18.565 22 20M2 20C3.94649 17.5226 6.58918 16 9.5 16C12.4108 16 15.0535 17.5226 17 20M14 7.5C14 9.98528 11.9853 12 9.5 12C7.01472 12 5 9.98528 5 7.5C5 5.01472 7.01472 3 9.5 3C11.9853 3 14 5.01472 14 7.5Z" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                       </svg>
-  
+
                       <p><%= data.agency_id.colleagues %>+ Collega's</p>
                   </div>
               <% } %>
@@ -69,11 +71,11 @@
               <h4>Details</h4>
               <ul>
                 <li>
-                <% 
-                let date = new Date(data.date_posted);
-                if (!isNaN(date.getTime())) { 
-                    let options = { year: 'numeric', month: 'long', day: 'numeric' };
-                    let formattedDate = date.toLocaleDateString('nl-NL', options);
+                <%
+                let date = new Date(data.date_posted)
+                if (!isNaN(date.getTime())) {
+                    let options = { year: 'numeric', month: 'long', day: 'numeric' }
+                    let formattedDate = date.toLocaleDateString('nl-NL', options)
                 %>
                 Datum van post: <%= formattedDate %>
                 <% } else { %>
@@ -86,10 +88,14 @@
               </ul>
             </div>
           </article>
-
           <div class="block-banner">
             <picture>
-              <img src="https://fdnd-agency.directus.app/assets/<%= data.photo.id %>" alt="<%= data.title %>" width="<%= data.photo.width %>" height="<%= data.photo.height %>">
+              <% if (data.photo) { %>
+                <img src="https://fdnd-agency.directus.app/assets/<%= data.photo.id %>" alt="<%= data.title %>" width="<%= data.photo.width %>" height="<%= data.photo.height %>">
+              <% } else { %>
+                <!-- Provide a fallback image or alternative content -->
+                <p>No photo available</p>
+              <% } %>
             </picture>
           </div>
         </section>
@@ -99,7 +105,7 @@
             <h1>Over <%= data.agency_id.title %></h1>
           </article>
         </section>
-        
+
         <section class="block">
           <div class="content">
             <ul class="grid grid3x">
@@ -124,7 +130,7 @@
             <!-- Als er meer dan 1 vacatures zijn laat dit zien -->
             <% if (data.agency_id.vacancies.length > 1) { %>
             <a aria-label="Terug naar overzicht" style="padding-inline-start: 0; padding-inline-end: 0;" class="btn secondary line-animation" href="/vacancy/next/<%= data.id %>/<%= data.agency_id.id %>">
-              
+
                Naar volgende vacature van <%= data.agency_id.title %>
                <svg style="rotate: 180deg" width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M19 12H5M5 12L12 19M5 12L12 5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -134,13 +140,7 @@
           </article>
         </section>
 
-        <script>
-          document.querySelectorAll(".block .content .description a").forEach(function(link) {
-              link.classList.add("line-animation");
-          });
-        </script>
         <%- include('../components/footer') %>
     </div>
   </body>
 </html>
-
